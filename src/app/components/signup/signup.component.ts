@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../../services/session.service';
+import { SignupService } from '../../services/signup.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   newUser: Object = {};
-  success: Object;
+  response: Object;
 
   constructor(
-    private signupService: SessionService,
+    private signupService: SignupService,
     private router: Router
   ) { }
 
@@ -21,11 +21,9 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.success = this.signupService.signup(this.newUser);
+    this.response = this.signupService.signup(this.newUser);
     form.reset();
-    if (this.success) {
-      this.router.navigate(['/']);
-    }
+    this.router.navigate(['/']);
 
    }
 

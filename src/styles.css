@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+/* Flashes */
+
+.flash-success {
+  background-color: lightgreen;
+  height: 30px;
+  width: 70%
+
+}
+
+.flash-error {
+  background-color: tomato;
+  height: 30px;
+  width: 70%
+}

@@ -9,9 +9,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 import { appRouting } from './app.routing';
 
 import { SessionService } from './services/session.service';
+import { SignupService } from './services/signup.service';
 
 @NgModule({
   declarations: [
@@ -26,10 +29,12 @@ import { SessionService } from './services/session.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    FlashMessagesModule,
     appRouting
   ],
   providers: [
-    SessionService
+    SessionService,
+    SignupService
   ],
   bootstrap: [AppComponent]
 })
