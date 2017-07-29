@@ -75,7 +75,7 @@ export class SessionService {
         })
         .catch(this.handleError);
     } else {
-        this.logout();
+        this.router.navigate(['/']);
         return false;
       }
     }

@@ -19,7 +19,7 @@ export class LoginComponent {
   login() {
     this.session.login(this.user).subscribe(
       data => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       },
       err => {
         console.log(err);
