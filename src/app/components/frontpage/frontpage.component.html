@@ -4,6 +4,13 @@
   <a routerLink="/signup">Sign up</a>
 </p>
 
-<p>
-  <a routerLink="/login">Log in</a>
-</p>
+<div *ngIf="session.isAuthenticated">
+  <p>
+    <a (click)="logout()" class="logout">Log out</a>
+  </p>
+</div>
+<div *ngIf="!session.isAuthenticated">
+  <p>
+    <a routerLink="/login">Log in</a>
+  </p>
+</div>

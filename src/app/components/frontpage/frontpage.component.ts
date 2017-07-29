@@ -1,5 +1,6 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, AfterViewChecked } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-frontpage',
@@ -8,18 +9,24 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class FrontpageComponent implements AfterViewChecked {
 
-  constructor(private flashMessagesService: FlashMessagesService) { }
+  constructor(
+    private flashMessagesService: FlashMessagesService,
+    private session: SessionService
+  ) { }
 
   ngAfterViewChecked() {
     if (localStorage.getItem('flash-success')) {
-      this.flashMessagesService.show(localStorage.getItem('flash-success'), { cssClass: 'flash-success' });
+      this.flashMessagesService.show(localStorage.getItem('flash-success'), { cssClass: 'flash flash-success', timeout: 1500 });
       localStorage.removeItem('flash-success');
     }
     if (localStorage.getItem('flash-error')) {
-      this.flashMessagesService.show(localStorage.getItem('flash-error'), { cssClass: 'flash-error' });
+      this.flashMessagesService.show(localStorage.getItem('flash-error'), { cssClass: 'flash flash-error', timeout: 1500 });
       localStorage.removeItem('flash-error');
     }
+  }
 
+  logout() {
+    this.session.logout();
   }
 
 }

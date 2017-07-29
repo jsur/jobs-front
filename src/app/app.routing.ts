@@ -4,10 +4,11 @@ import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { SessionService } from './services/session.service';
 
 const appRoutes: Routes = [
   //  Redirect from path '' home page to about page
-  { path: '', component: FrontpageComponent },
+  { path: '', component: FrontpageComponent, canActivate: [SessionService] },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent }

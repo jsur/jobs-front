@@ -1,14 +1,15 @@
 /* Flashes */
 
+.flash {
+  height: 30px;
+  width: 70%;
+  border-radius: 5px;
+}
+
 .flash-success {
   background-color: lightgreen;
-  height: 30px;
-  width: 70%
-
 }
 
 .flash-error {
   background-color: tomato;
-  height: 30px;
-  width: 70%
 }
