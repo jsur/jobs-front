@@ -1,0 +1,13 @@
+<div class="lead-cards">
+  <div *ngFor="let lead of leads">
+    <a routerLink="/">
+      <div class="lead-card">
+        <img src="{{lead.logourl}}" alt="Logo">
+        <div class="lead-text">
+          <p>{{lead.company}}</p>
+          <p>{{lead.jobtitle}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -18,6 +18,7 @@ import { SessionService } from './services/session.service';
 import { SignupService } from './services/signup.service';
 import { LeadService } from './services/lead.service';
 import { DashboardColumnsComponent } from './components/dashboard-columns/dashboard-columns.component';
+import { DashboardLeadcardComponent } from './components/dashboard-leadcard/dashboard-leadcard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DashboardColumnsComponent } from './components/dashboard-columns/dashbo
     LoginComponent,
     NotFoundComponent,
     FrontpageComponent,
-    DashboardColumnsComponent
+    DashboardColumnsComponent,
+    DashboardLeadcardComponent
   ],
   imports: [
     BrowserModule,

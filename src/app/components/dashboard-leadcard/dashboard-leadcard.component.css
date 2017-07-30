@@ -1,0 +1,29 @@
+a {
+  text-decoration: none;
+}
+
+.lead-card:hover {
+  background-color: #DEFFF9;
+}
+
+.lead-card {
+  border: 1px solid #00968B;
+  min-height: 100px;
+  margin: 2%;
+  border-radius: 5px;
+  display: flex;
+}
+
+.lead-card img {
+  width: 64px;
+  height: 64px;
+  margin: auto 2%;
+}
+
+.lead-text {
+  margin: auto 10%;
+}
+
+.lead-text p {
+  margin: 0;
+}

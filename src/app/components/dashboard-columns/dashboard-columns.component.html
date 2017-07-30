@@ -2,76 +2,28 @@
   <div class="lead-col lead-contacted">
     <p class="col-header">Contacted</p>
     <div *ngIf="leadsContacted">
-      <div class="lead-cards">
-        <div *ngFor="let lead of leadsContacted">
-          <a routerLink="/">
-            <div class="lead-card">
-              <img src="{{lead.logourl}}" alt="Logo">
-              <div class="lead-text">
-                <p>{{lead.company}}</p>
-                <p>{{lead.jobtitle}}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+      <app-dashboard-leadcard [leads]="leadsContacted"></app-dashboard-leadcard>
     </div>
   </div>
 
   <div class="lead-col lead-replyreceived">
     <p class="col-header">Reply received</p>
     <div *ngIf="leadsReplyReceived">
-      <div class="lead-cards">
-        <div *ngFor="let lead of leadsReplyReceived">
-          <a routerLink="/">
-            <div class="lead-card">
-              <img src="{{lead.logourl}}" alt="Logo">
-              <div class="lead-text">
-                <p>{{lead.company}}</p>
-                <p>{{lead.jobtitle}}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+      <app-dashboard-leadcard [leads]="leadsReplyReceived"></app-dashboard-leadcard>
     </div>
   </div>
 
   <div class="lead-col lead-interview">
     <p class="col-header">Interview</p>
     <div *ngIf="leadsInterview">
-      <div class="lead-cards">
-        <div *ngFor="let lead of leadsInterview">
-          <a routerLink="/">
-            <div class="lead-card">
-              <img src="{{lead.logourl}}" alt="Logo">
-              <div class="lead-text">
-                <p>{{lead.company}}</p>
-                <p>{{lead.jobtitle}}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+      <app-dashboard-leadcard [leads]="leadsInterview"></app-dashboard-leadcard>
     </div>
   </div>
 
   <div class="lead-col lead-done">
     <p class="col-header">Done</p>
     <div *ngIf="leadsDone">
-      <div class="lead-cards">
-        <div *ngFor="let lead of leadsDone">
-          <a routerLink="/">
-            <div class="lead-card">
-              <img src="{{lead.logourl}}" alt="Logo">
-              <div class="lead-text">
-                <p>{{lead.company}}</p>
-                <p>{{lead.jobtitle}}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+      <app-dashboard-leadcard [leads]="leadsDone"></app-dashboard-leadcard>
     </div>
   </div>
 </div>
