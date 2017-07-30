@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeadService } from '../../services/lead.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-dashboard-columns',
@@ -13,10 +14,14 @@ export class DashboardColumnsComponent implements OnInit {
   leadsInterview: Array<Object>;
   leadsDone: Array<Object>;
 
-  constructor(private leads: LeadService) { }
+  constructor(
+    private leads: LeadService,
+    private session: SessionService
+  ) { }
 
   ngOnInit() {
-    this.leads.getAllLeads()
+
+    this.leads.getUserLeads(this.session.user)
       .subscribe(
         data => {
           this.leadsContacted = data.leadsContacted;

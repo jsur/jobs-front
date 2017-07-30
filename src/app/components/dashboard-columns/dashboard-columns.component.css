@@ -2,12 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   background-color: #DEFFF9;
 }
 
 .lead-col {
-  min-height: 200px;
   border-radius: 5px;
   width: 100%;
   margin: 1%;
@@ -75,6 +73,7 @@ a {
   .columns {
     flex-direction: row;
     align-items: baseline;
+    height: 100vh;
   }
 }
 

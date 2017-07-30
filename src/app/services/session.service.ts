@@ -30,7 +30,7 @@ export class SessionService {
         if (token) {
           this.token = token;
           this.user = {
-            _id: loggedInUser.id,
+            _id: loggedInUser._id,
             username: loggedInUser.username
           }
           this.isAuthenticated = true;

@@ -18,8 +18,8 @@ export class LeadService {
     return Observable.throw(e.json().message);
   }
 
-  getAllLeads() {
-    return this.http.get(`${this.url}/api/leads`)
+  getUserLeads(user) {
+    return this.http.get(`${this.url}/api/leads/${user._id}`)
       .map(res => res.json())
       .catch(this.handleError);
   }
