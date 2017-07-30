@@ -1,3 +1,32 @@
+/* Common styles - elements */
+
+
+a {
+  cursor: pointer;
+}
+
+/* Common styles - ids */
+
+#custom-header {
+  background: linear-gradient(to left, rgba(145,219,205,100), rgba(2,186,169,100));
+}
+
+#custom-button {
+  background-color: #00AB9A;
+  border-color: #00968B;
+  border-radius: 0;
+}
+
+#custom-button:hover {
+  background-color: #00D4B8;
+}
+
+/* Common styles - classes */
+
+.header-nav:hover {
+  background-color: #007E7A;
+}
+
 /* Flashes */
 
 .flash {
@@ -13,3 +42,26 @@
 .flash-error {
   background-color: tomato;
 }
+
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}

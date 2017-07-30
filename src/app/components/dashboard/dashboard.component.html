@@ -1,3 +1,18 @@
-<p>
-  dashboard works!
-</p>
+<header id="custom-header" class="header">
+    <div class="header-nav">
+        <a class="active nav-link nav-text">
+          <clr-icon shape="plus"></clr-icon>
+        </a>
+    </div>
+    <div class="header-actions">
+      <div *ngIf="session.isAuthenticated">
+        <div class="header-actions">
+          <a (click)="logout()" class="nav-link nav-text">
+            Log Out
+          </a>
+        </div>
+      </div>
+    </div>
+</header>
+
+<app-dashboard-columns></app-dashboard-columns>
