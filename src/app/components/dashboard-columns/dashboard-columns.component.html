@@ -1,29 +1,75 @@
 <div class="columns">
   <div class="lead-col lead-contacted">
     <p class="col-header">Contacted</p>
-    <div class="lead-cards">
-      <a href="#">
-        <div class="lead-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1000px-Google_%22G%22_Logo.svg.png" alt="Logo">
-          <div class="lead-text">
-            <p>Google Inc.</p>
-            <p>Software Developer</p>
-          </div>
+    <div *ngIf="leadsContacted">
+      <div class="lead-cards">
+        <div *ngFor="let lead of leadsContacted">
+          <a routerLink="/">
+            <div class="lead-card">
+              <img src="{{lead.logourl}}" alt="Logo">
+              <div class="lead-text">
+                <p>{{lead.company}}</p>
+                <p>{{lead.jobtitle}}</p>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
+      </div>
     </div>
 
   </div>
   <div class="lead-col lead-replyreceived">
     <p class="col-header">Reply received</p>
-
+    <div *ngIf="leadsReplyReceived">
+      <div class="lead-cards">
+        <div *ngFor="let lead of leadsReplyReceived">
+          <a routerLink="/">
+            <div class="lead-card">
+              <img src="{{lead.logourl}}" alt="Logo">
+              <div class="lead-text">
+                <p>{{lead.company}}</p>
+                <p>{{lead.jobtitle}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="lead-col lead-interview">
     <p class="col-header">Interview</p>
-
+    <div *ngIf="leadsInterview">
+      <div class="lead-cards">
+        <div *ngFor="let lead of leadsInterview">
+          <a routerLink="/">
+            <div class="lead-card">
+              <img src="{{lead.logourl}}" alt="Logo">
+              <div class="lead-text">
+                <p>{{lead.company}}</p>
+                <p>{{lead.jobtitle}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="lead-col lead-done">
     <p class="col-header">Done</p>
-
+    <div *ngIf="leadsDone">
+      <div class="lead-cards">
+        <div *ngFor="let lead of leadsDone">
+          <a routerLink="/">
+            <div class="lead-card">
+              <img src="{{lead.logourl}}" alt="Logo">
+              <div class="lead-text">
+                <p>{{lead.company}}</p>
+                <p>{{lead.jobtitle}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -8,6 +8,9 @@
   <p>
     <a (click)="logout()" class="logout">Log out</a>
   </p>
+  <p>
+    <a routerLink="/dashboard">Dashboard</a>
+  </p>
 </div>
 <div *ngIf="!session.isAuthenticated">
   <p>

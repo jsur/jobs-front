@@ -16,6 +16,7 @@ import { appRouting } from './app.routing';
 
 import { SessionService } from './services/session.service';
 import { SignupService } from './services/signup.service';
+import { LeadService } from './services/lead.service';
 import { DashboardColumnsComponent } from './components/dashboard-columns/dashboard-columns.component';
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DashboardColumnsComponent } from './components/dashboard-columns/dashbo
   ],
   providers: [
     SessionService,
-    SignupService
+    SignupService,
+    LeadService
   ],
   bootstrap: [AppComponent]
 })
