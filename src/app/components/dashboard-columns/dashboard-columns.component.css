@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #DEFFF9;
+  background-color: #F5F5F5;
   min-height: 100vh;
 }
 
@@ -10,14 +10,14 @@
   border-radius: 5px;
   width: 100%;
   margin: 1%;
-  background: #FAFAFA;
+  /*background: #F2F2F2;*/
 }
 
 .col-header {
-  margin: 2% 2% 4% 2%;
-  border-bottom: 1px solid #006668;
-  text-align: center;
-  font-weight: bold;
+  margin: 2% 5% 4% 5%;
+  border-bottom: 1px solid gray;
+  text-transform: uppercase;
+  padding-bottom: 3px;
 }
 
 /* Mobile first queries */

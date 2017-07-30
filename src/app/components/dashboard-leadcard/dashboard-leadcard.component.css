@@ -3,15 +3,17 @@ a {
 }
 
 .lead-card:hover {
-  background-color: #DEFFF9;
+  box-shadow: 2px 2px 2px 1px #DDDDDD;
 }
 
 .lead-card {
-  border: 1px solid #00968B;
   min-height: 100px;
-  margin: 2%;
+  margin: 5%;
   display: flex;
-  box-shadow: 1px 1px 1px 0 #00BFA9;
+  box-shadow: 1px 1px 1px 0 lightgray;
+  background-color: white;
+  color: #3F3F3F;
+  padding: 4px;
 }
 
 .lead-card:focus {
@@ -35,4 +37,13 @@ a {
 
 .lead-text p {
   margin: 0;
+}
+
+.jobtitle {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.company {
+  font-size: 1rem;
 }

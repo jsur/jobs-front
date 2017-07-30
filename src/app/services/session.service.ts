@@ -75,7 +75,7 @@ export class SessionService {
         })
         .catch(this.handleError);
     } else {
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         return false;
       }
     }
