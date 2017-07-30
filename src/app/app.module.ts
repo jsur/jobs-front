@@ -19,6 +19,7 @@ import { SignupService } from './services/signup.service';
 import { LeadService } from './services/lead.service';
 import { DashboardColumnsComponent } from './components/dashboard-columns/dashboard-columns.component';
 import { DashboardLeadcardComponent } from './components/dashboard-leadcard/dashboard-leadcard.component';
+import { DashboardNewleadComponent } from './components/dashboard-newlead/dashboard-newlead.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +30,15 @@ import { DashboardLeadcardComponent } from './components/dashboard-leadcard/dash
     NotFoundComponent,
     FrontpageComponent,
     DashboardColumnsComponent,
-    DashboardLeadcardComponent
+    DashboardLeadcardComponent,
+    DashboardNewleadComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     FlashMessagesModule,
-    ClarityModule,
+    ClarityModule.forRoot(),
     appRouting
   ],
   providers: [

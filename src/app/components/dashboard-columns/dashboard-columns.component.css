@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #DEFFF9;
+  min-height: 100vh;
 }
 
 .lead-col {

@@ -1,6 +1,6 @@
 <header id="custom-header" class="header">
     <div class="header-nav">
-        <a class="active nav-link nav-text">
+        <a (click)="newLead()" class="active nav-link nav-text">
           <clr-icon shape="plus"></clr-icon>
         </a>
     </div>
@@ -15,5 +15,7 @@
       </div>
     </div>
 </header>
+
+<app-dashboard-newlead [hidden]="!newLeadActive" (modalClosed)="onModalClosed()"></app-dashboard-newlead>
 
 <app-dashboard-columns></app-dashboard-columns>

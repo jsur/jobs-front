@@ -8,6 +8,8 @@ import { SessionService } from '../../services/session.service';
 })
 export class DashboardComponent implements OnInit {
 
+  newLeadActive = false;
+
   constructor(private session: SessionService) { }
 
   ngOnInit() {
@@ -15,6 +17,14 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     this.session.logout();
+  }
+
+  newLead() {
+    this.newLeadActive = !this.newLeadActive;
+  }
+
+  onModalClosed() {
+    this.newLeadActive = false;
   }
 
 }

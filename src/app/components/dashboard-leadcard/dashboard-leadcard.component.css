@@ -10,8 +10,17 @@ a {
   border: 1px solid #00968B;
   min-height: 100px;
   margin: 2%;
-  border-radius: 5px;
   display: flex;
+  box-shadow: 1px 1px 1px 0 #00BFA9;
+}
+
+.lead-card:focus {
+  outline: 0;
+}
+
+.lead-card:active {
+  box-shadow: 0px 0px 0px 0 #00BFA9;
+  transform: translateY(2px);
 }
 
 .lead-card img {

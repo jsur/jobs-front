@@ -1,0 +1,82 @@
+<div class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" type="button">
+                    <clr-icon aria-hidden="true" shape="close" (click)="close()"></clr-icon>
+                </button>
+                <h3 class="modal-title">Create new lead</h3>
+            </div>
+            <div class="modal-body">
+              <form #submitForm="ngForm" (ngSubmit)="submit(submitForm)">
+                  <section class="form-block">
+                      <div class="form-group">
+                          <label for="company">Company</label>
+                          <input
+                            type="text"
+                            name="company"
+                            size="45"
+                            [(ngModel)]="newLead.company"
+                            required
+                            >
+                      </div>
+                      <div class="form-group">
+                          <label for="contactperson-email">Contact person email </label>
+                          <input
+                            type="text"
+                            name="contactpersonemail"
+                            size="45"
+                            [(ngModel)]="newLead.contactpersonemail"
+                            required
+                            >
+                      </div>
+                      <div class="form-group">
+                          <label for="contactperson-name">Contact person name </label>
+                          <input
+                            type="text"
+                            name="contactperson-name"
+                            size="45"
+                            [(ngModel)]="newLead.contactpersonname"
+                            >
+                      </div>
+                      <div class="form-group">
+                          <label for="jobtitle">Job title</label>
+                          <input
+                            type="text"
+                            name="jobtitle"
+                            size="45"
+                            [(ngModel)]="newLead.jobtitle"
+                            required
+                            >
+                      </div>
+                      <div class="form-group">
+                          <label for="status">Status</label>
+                          <div class="select">
+                              <select name="status" [(ngModel)]="newLead.status" required>
+                                  <option value="contacted">Contacted</option>
+                                  <option value="replyreceived">Reply received</option>
+                                  <option value="interview">Interview</option>
+                                  <option value="done">Done</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="logourl">Company logo url</label>
+                          <input
+                            type="text"
+                            name="logourl"
+                            size="45"
+                            [(ngModel)]="newLead.logourl"
+                            >
+                      </div>
+                      <button
+                        class="btn btn-primary"
+                        [disabled]="!submitForm.valid"
+                        >Create</button>
+                  </section>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div>
