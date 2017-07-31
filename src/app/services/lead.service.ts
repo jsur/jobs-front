@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
 export class LeadService {
 
   url: string = environment.base_url;
+
   // Observable object source
   private newEventSource = new Subject<Object>();
   // Observable object stream

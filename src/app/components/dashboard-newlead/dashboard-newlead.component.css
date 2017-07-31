@@ -1,3 +1,49 @@
 #newlead {
   margin-top: 2rem;
 }
+
+#modalbody {
+  width: 65%;
+}
+
+#card-image {
+  width: 64px;
+  height: 64px;
+  border: none;
+}
+
+#card-picname * {
+  display: inline;
+}
+
+#poweredbyglassdoor {
+  display: block;
+  margin-top: 15px;
+}
+
+.modalcards {
+  width: 40%;
+}
+
+.card-img {
+  text-align: center;
+}
+
+.companyname {
+  margin-left: 20px;
+  font: 1.2rem;
+  font-weight: bold;
+}
+
+.modal-content-container {
+  display: flex;
+}
+
+.featured-review {
+  font-weight: bold;
+}
+
+.review-p {
+  margin: 0;
+  font-size: 0.9rem;
+}

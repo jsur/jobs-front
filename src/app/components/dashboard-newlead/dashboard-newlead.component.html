@@ -1,5 +1,5 @@
 <div class="modal">
-  <div class="modal-dialog modal-lg" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
         <button aria-label="Close" class="close" type="button">
@@ -7,78 +7,112 @@
         </button>
         <h3 class="modal-title">Create new lead</h3>
       </div>
-      <div class="modal-body">
-        <form id="newlead" #submitForm="ngForm" (ngSubmit)="submit(submitForm)">
-          <section class="form-block">
-            <div class="form-group">
-              <label for="company">Company</label>
-              <label for="company" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="companyInput.invalid && (companyInput.dirty || companyInput.touched)">
-                        <input
-                          type="text"
-                          name="company"
-                          size="45"
-                          [(ngModel)]="newLead.company"
-                          #companyInput="ngModel"
-                          required
-                          >
-                        <span class="tooltip-content">Company is required.</span>
-                      </label>
-            </div>
-            <div class="form-group">
-              <label for="contactperson-email">Contact person email </label>
-              <label for="contactperson-email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
-                            <input
-                              type="email"
-                              name="contactpersonemail"
-                              size="45"
-                              [(ngModel)]="newLead.contactpersonemail"
-                              #emailInput="ngModel"
-                              required
-                              email
-                              >
-                            <span class="tooltip-content">Email is not valid.</span>
-                          </label>
-            </div>
-            <div class="form-group">
-              <label for="contactperson-name">Contact person name </label>
-              <input type="text" name="contactperson-name" size="45" [(ngModel)]="newLead.contactpersonname">
-            </div>
-            <div class="form-group">
-              <label for="jobtitle">Job title</label>
-              <label for="jobtitle"
-                aria-haspopup="true"
-                role="tooltip"
-                class="tooltip tooltip-validation tooltip-md"
-                [class.invalid]="jobtitleInput.invalid && (jobtitleInput.dirty || jobtitleInput.touched)">
-              <input
-                type="text"
-                name="jobtitle"
-                size="45"
-                [(ngModel)]="newLead.jobtitle"
-                #jobtitleInput="ngModel"
-                required
-                >
-                <span class="tooltip-content">Job title is required.</span>
-              </label>
-            </div>
-            <div class="form-group">
-              <label for="status">Status</label>
-              <div class="select">
-                <select name="status" [(ngModel)]="newLead.status" required>
-                                  <option value="contacted">Contacted</option>
-                                  <option value="replyreceived">Reply received</option>
-                                  <option value="interview">Interview</option>
-                                  <option value="done">Done</option>
-                              </select>
+      <div class="modal-content-container">
+        <div id="modalbody" class="modal-body">
+          <form id="newlead" #submitForm="ngForm" (ngSubmit)="submit(submitForm)">
+            <section class="form-block">
+              <div class="form-group">
+                <label for="company">Company</label>
+                <label for="company" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="companyInput.invalid && (companyInput.dirty || companyInput.touched)">
+                          <input
+                            type="text"
+                            name="company"
+                            size="25"
+                            [(ngModel)]="newLead.company"
+                            #companyInput="ngModel"
+                            (blur)="getGlassDoorCompany(newLead.company)"
+                            required
+                            >
+                          <span class="tooltip-content">Company is required.</span>
+                        </label>
+              </div>
+              <div class="form-group">
+                <label for="contactperson-email">Contact person email </label>
+                <label for="contactperson-email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+                              <input
+                                type="email"
+                                name="contactpersonemail"
+                                size="25"
+                                [(ngModel)]="newLead.contactpersonemail"
+                                #emailInput="ngModel"
+                                required
+                                email
+                                >
+                              <span class="tooltip-content">Email is not valid.</span>
+                            </label>
+              </div>
+              <div class="form-group">
+                <label for="contactperson-name">Contact person name </label>
+                <input
+                  type="text"
+                  name="contactperson-name"
+                  size="28"
+                  [(ngModel)]="newLead.contactpersonname"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="jobtitle">Job title</label>
+                <label for="jobtitle"
+                  aria-haspopup="true"
+                  role="tooltip"
+                  class="tooltip tooltip-validation tooltip-md"
+                  [class.invalid]="jobtitleInput.invalid && (jobtitleInput.dirty || jobtitleInput.touched)">
+                <input
+                  type="text"
+                  name="jobtitle"
+                  size="25"
+                  [(ngModel)]="newLead.jobtitle"
+                  #jobtitleInput="ngModel"
+                  required
+                  >
+                  <span class="tooltip-content">Job title is required.</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="status">Status</label>
+                <div class="select">
+                  <select name="status" [(ngModel)]="newLead.status" required>
+                                    <option value="contacted">Contacted</option>
+                                    <option value="replyreceived">Reply received</option>
+                                    <option value="interview">Interview</option>
+                                    <option value="done">Done</option>
+                                </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="logourl">Company logo url</label>
+                <input
+                  type="text"
+                  name="logourl"
+                  size="28"
+                  [(ngModel)]="newLead.logourl"
+                  >
+              </div>
+              <button class="btn btn-primary" [disabled]="!submitForm.valid">Create</button>
+            </section>
+          </form>
+        </div>
+
+        <div *ngIf="companyRating.length > 0" class="modalcards">
+            <div class="card">
+              <div id="card-picname" class="card-img">
+                <img id="card-image" src="{{companyRating[0].squareLogo}}" alt="No logo found." />
+                <span class="companyname">{{companyRating[0].name}}</span>
+              </div>
+              <div class="card-block">
+                <p class="card-text">
+                  Overall rating: {{companyRating[0].overallRating}}
+                </p>
+                <p class="featured-review">Featured review</p>
+                <p class="review-p"><strong>Title:</strong> {{companyRating[0].featuredReview.jobTitle}}</p>
+                <p class="review-p"><strong>Pros:</strong> {{companyRating[0].featuredReview.pros}}</p>
+                <p class="review-p"><strong>Cons:</strong> {{companyRating[0].featuredReview.cons}}</p>
+                <p class="review-p"><strong>Location:</strong> {{companyRating[0].featuredReview.location}}</p>
+                <a id="poweredbyglassdoor" href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
               </div>
             </div>
-            <div class="form-group">
-              <label for="logourl">Company logo url</label>
-              <input type="text" name="logourl" size="45" [(ngModel)]="newLead.logourl">
-            </div>
-            <button class="btn btn-primary" [disabled]="!submitForm.valid">Create</button>
-          </section>
-        </form>
+        </div>
+
       </div>
     </div>
   </div>

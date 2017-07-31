@@ -17,6 +17,7 @@ import { appRouting } from './app.routing';
 import { SessionService } from './services/session.service';
 import { SignupService } from './services/signup.service';
 import { LeadService } from './services/lead.service';
+import { ExternalService } from './services/external.service';
 import { DashboardColumnsComponent } from './components/dashboard-columns/dashboard-columns.component';
 import { DashboardLeadcardComponent } from './components/dashboard-leadcard/dashboard-leadcard.component';
 import { DashboardNewleadComponent } from './components/dashboard-newlead/dashboard-newlead.component';
@@ -44,7 +45,8 @@ import { DashboardNewleadComponent } from './components/dashboard-newlead/dashbo
   providers: [
     SessionService,
     SignupService,
-    LeadService
+    LeadService,
+    ExternalService
   ],
   bootstrap: [AppComponent]
 })

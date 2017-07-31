@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { LeadService } from '../../services/lead.service';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
+import { ExternalService } from '../../services/external.service';
 
 @Component({
   selector: 'app-dashboard-newlead',
@@ -13,10 +14,12 @@ export class DashboardNewleadComponent {
   @Output() modalClosed = new EventEmitter();
 
   newLead: Object = {};
+  companyRating: Array<Object> = [];
 
   constructor(
     private leads: LeadService,
-    private session: SessionService
+    private session: SessionService,
+    private externals: ExternalService
   ) { }
 
   close() {
@@ -36,6 +39,19 @@ export class DashboardNewleadComponent {
       );
     form.reset();
     this.modalClosed.emit();
+  }
+
+  getGlassDoorCompany(company: string) {
+    this.externals.glassDoorData(company)
+      .subscribe(
+        data => {
+          this.companyRating.push(data.response.employers[0]);
+          console.log(this.companyRating);
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
 }
