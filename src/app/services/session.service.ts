@@ -6,11 +6,16 @@ import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
 import { environment } from '../../environments/environment';
 
+export class SessionUser {
+  username: string;
+  _id: string;
+}
+
 
 @Injectable()
 export class SessionService {
 
-  public user = {};
+  public user: SessionUser = {username: '', _id: ''};
   public token = '';
   public isAuthenticated = false;
 
@@ -45,7 +50,7 @@ export class SessionService {
 
   logout() {
     this.token = '';
-    this.user = {}
+    this.user = {username: '', _id: ''}
     this.isAuthenticated = false;
     localStorage.removeItem('token');
 

@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private session: SessionService) { }
 
   ngOnInit() {
+    console.log(this.session);
   }
 
   logout() {

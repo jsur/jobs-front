@@ -24,4 +24,10 @@ export class LeadService {
       .catch(this.handleError);
   }
 
+  createLead(newLead) {
+    return this.http.post(`${this.url}/api/lead/new`, newLead)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
 }
