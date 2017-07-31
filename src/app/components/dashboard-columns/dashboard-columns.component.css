@@ -10,7 +10,6 @@
   border-radius: 5px;
   width: 100%;
   margin: 1%;
-  /*background: #F2F2F2;*/
 }
 
 .col-header {
@@ -44,7 +43,7 @@
   .columns {
     flex-direction: row;
     align-items: baseline;
-    height: 100vh;
+    min-height: 100vh;
   }
 }
 

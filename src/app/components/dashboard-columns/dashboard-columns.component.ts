@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LeadService } from '../../services/lead.service';
 import { SessionService } from '../../services/session.service';
+import { Observable } from 'rxjs/Rx';
+import { Lead } from '../../shared/models/Lead';
 
 @Component({
   selector: 'app-dashboard-columns',
@@ -17,10 +19,22 @@ export class DashboardColumnsComponent implements OnInit {
   constructor(
     private leads: LeadService,
     private session: SessionService
-  ) { }
+  ) {
+    this.leads.newEvent$.subscribe(
+      data => {
+        this.getLeads();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
 
   ngOnInit() {
+    this.getLeads();
+  }
 
+  getLeads() {
     this.leads.getUserLeads(this.session.user)
       .subscribe(
         data => {

@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LeadService } from '../../services/lead.service';
 import { SessionService } from '../../services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-newlead',
@@ -27,12 +28,12 @@ export class DashboardNewleadComponent {
     this.leads.createLead(this.newLead)
       .subscribe(
         data => {
-          console.log(data);
+          this.leads.announceNewLead(data.lead);
         },
         err => {
           console.log(err);
         }
-      )
+      );
     form.reset();
     this.modalClosed.emit();
   }
