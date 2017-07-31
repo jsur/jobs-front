@@ -102,14 +102,19 @@
                 <span class="companyname">{{companyRating[0].name}}</span>
               </div>
               <div class="card-block">
-                <p class="card-text">
-                  Overall rating: {{companyRating[0].overallRating}}
+                <p class="card-text overall-rating">
+                  Overall rating: {{companyRating[0].overallRating}} out of {{companyRating[0].numberOfRatings}} ratings
                 </p>
-                <p class="featured-review">Featured review</p>
-                <p class="review-p"><strong>Title:</strong> {{companyRating[0].featuredReview.jobTitle}}</p>
-                <p class="review-p"><strong>Pros:</strong> {{companyRating[0].featuredReview.pros}}</p>
-                <p class="review-p"><strong>Cons:</strong> {{companyRating[0].featuredReview.cons}}</p>
-                <p class="review-p"><strong>Location:</strong> {{companyRating[0].featuredReview.location}}</p>
+                <div *ngIf="companyRating[0].ceo">
+                  <p class="ceo-p">{{companyRating[0].ceo.pctApprove}} % of {{companyRating[0].ceo.numberOfRatings}} ratings approve CEO.</p>
+                </div>
+                <div *ngIf="companyRating[0].featuredReview">
+                  <p class="featured-review">Featured review</p>
+                  <p class="review-p"><strong>Title:</strong> {{companyRating[0].featuredReview.jobTitle}}</p>
+                  <p class="review-p"><strong>Pros:</strong> {{companyRating[0].featuredReview.pros}}</p>
+                  <p class="review-p"><strong>Cons:</strong> {{companyRating[0].featuredReview.cons}}</p>
+                  <p class="review-p"><strong>Reviewer location:</strong> {{companyRating[0].featuredReview.location}}</p>
+                </div>
                 <a id="poweredbyglassdoor" href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
               </div>
             </div>

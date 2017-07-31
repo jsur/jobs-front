@@ -47,8 +47,10 @@ export class DashboardNewleadComponent {
       this.externals.glassDoorData(company)
         .subscribe(
           data => {
-            this.companyRating.push(data.response.employers[0]);
-            console.log(this.companyRating);
+            if (data.response.employers.length > 0) {
+              this.companyRating.push(data.response.employers[0]);
+              console.log(this.companyRating);
+            }
           },
           err => {
             console.log(err);

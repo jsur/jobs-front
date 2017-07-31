@@ -35,6 +35,10 @@
   font-weight: bold;
 }
 
+.overall-rating {
+  font-weight: bold;
+}
+
 .modal-content-container {
   display: flex;
 }
@@ -43,7 +47,8 @@
   font-weight: bold;
 }
 
-.review-p {
+.review-p,
+.ceo-p {
   margin: 0;
   font-size: 0.9rem;
 }
