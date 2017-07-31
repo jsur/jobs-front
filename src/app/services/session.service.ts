@@ -66,14 +66,21 @@ export class SessionService {
     const token = localStorage.getItem('token');
 
     if (token) {
+
       const headers = new Headers({ 'Authorization': `JWT ${token}` });
       const options = new RequestOptions({ headers: headers });
 
-      return this.http.get(`${this.url}/ping`, options)
+      return this.http.get(`${this.url}/auth`, options)
         .map((data) => {
           if (data) {
+            const json = data.json();
+
             this.isAuthenticated = true;
             this.token = token;
+            this.user = {
+              _id: json.user._id,
+              username: json.user.username
+            }
             return true;
           }
           return false;

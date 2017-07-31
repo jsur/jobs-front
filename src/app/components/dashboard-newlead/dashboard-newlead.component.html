@@ -1,5 +1,5 @@
 <div class="modal">
-    <div class="modal-dialog" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-label="Close" class="close" type="button">
@@ -8,27 +8,44 @@
                 <h3 class="modal-title">Create new lead</h3>
             </div>
             <div class="modal-body">
-              <form #submitForm="ngForm" (ngSubmit)="submit(submitForm)">
+              <form id="newlead" #submitForm="ngForm" (ngSubmit)="submit(submitForm)">
                   <section class="form-block">
                       <div class="form-group">
                           <label for="company">Company</label>
-                          <input
-                            type="text"
-                            name="company"
-                            size="45"
-                            [(ngModel)]="newLead.company"
-                            required
-                            >
+                          <label for="company"
+                            aria-haspopup="true"
+                            role="tooltip"
+                            class="tooltip tooltip-validation tooltip-md"
+                            [class.invalid]="companyInput.invalid && (companyInput.dirty || companyInput.touched)">
+                            <input
+                              type="text"
+                              name="company"
+                              size="45"
+                              [(ngModel)]="newLead.company"
+                              #companyInput="ngModel"
+                              required
+                              >
+                            <span class="tooltip-content">Company is required.</span>
+                          </label>
                       </div>
                       <div class="form-group">
                           <label for="contactperson-email">Contact person email </label>
-                          <input
-                            type="text"
-                            name="contactpersonemail"
-                            size="45"
-                            [(ngModel)]="newLead.contactpersonemail"
-                            required
-                            >
+                          <label for="contactperson-email"
+                            aria-haspopup="true"
+                            role="tooltip"
+                            class="tooltip tooltip-validation tooltip-md"
+                            [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+                            <input
+                              type="email"
+                              name="contactpersonemail"
+                              size="45"
+                              [(ngModel)]="newLead.contactpersonemail"
+                              #emailInput="ngModel"
+                              required
+                              email
+                              >
+                            <span class="tooltip-content">Email is not valid.</span>
+                          </label>
                       </div>
                       <div class="form-group">
                           <label for="contactperson-name">Contact person name </label>

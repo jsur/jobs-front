@@ -13,10 +13,12 @@ export class SignupService {
     return this.http.post(`${this.url}/signup`, user)
       .subscribe(
         data => {
-            localStorage.setItem('flash-success', 'Signup successful!');
+          console.log('signup ok!');
+          // localStorage.setItem('flash-success', 'Signup successful!');
         },
         err => {
-          localStorage.setItem('flash-error', JSON.parse(err._body).message);
+          console.log(err);
+          // localStorage.setItem('flash-error', JSON.parse(err._body).message);
         }
     );
   }
