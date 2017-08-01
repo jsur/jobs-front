@@ -1,4 +1,29 @@
 <app-header></app-header>
-<p>
-  {{individualLead.company}}
-</p>
+<div *ngIf="individualLead" class="page-content">
+  <div class="flex-container">
+    <div class="main-col main-col-1">
+      <div class="topic">
+        <img class="topic-img" src="{{individualLead.logourl}}" alt="">
+        <div class="topic-text">
+          <h2>{{individualLead.jobtitle}}</h2>
+          <h3>{{individualLead.company}}</h3>
+          <p>Last updated: {{individualLead.updated_at | date:'longDate'}}</p>
+        </div>
+      </div>
+      <div class="lead-info">
+        <h3>Lead status</h3>
+        <h4>{{individualLead.status}}</h4>
+        <h3>Lead created</h3>
+        <h4>{{individualLead.created_at | date:'longDate'}}</h4>
+      </div>
+      <div class="lead-contact">
+        <h3>Lead contact</h3>
+        <h4>{{individualLead.contactperson?.name}}</h4>
+        <h4>{{individualLead?.contactperson?.email}}</h4>
+      </div>
+    </div>
+    <div class="main-col main-col-2">
+
+    </div>
+  </div>
+</div>

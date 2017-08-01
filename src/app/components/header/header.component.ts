@@ -9,6 +9,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() plusButton = new EventEmitter();
+  @Output() logOut = new EventEmitter();
 
   constructor(
     private session: SessionService,
@@ -23,8 +24,15 @@ export class HeaderComponent implements OnInit {
   }
 
   emitNewLead() {
-    console.log('moro');
     this.plusButton.emit();
+  }
+
+  emitLogOut() {
+    this.logOut.emit();
+  }
+
+  editLead() {
+    console.log('call service hello');
   }
 
 }

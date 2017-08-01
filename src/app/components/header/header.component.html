@@ -2,7 +2,7 @@
 
   <div *ngIf="router.url=='/dashboard'">
     <div class="header-nav">
-      <a (click)="emitNewLead()" class="active nav-link nav-text">
+      <a (click)="emitNewLead()" class="nav-link nav-text">
         <clr-icon shape="plus"></clr-icon>
       </a>
     </div>
@@ -10,8 +10,11 @@
 
     <div *ngIf="router.url.includes('lead')">
       <div class="header-nav">
-        <a (click)="goBack()" class="active nav-link nav-text">
+        <a (click)="goBack()" class="nav-link nav-text">
           <clr-icon shape="caret left"></clr-icon>
+        </a>
+        <a (click)="editLead()" class="nav-link nav-text">
+          <clr-icon shape="edit"></clr-icon>
         </a>
       </div>
     </div>
@@ -20,8 +23,15 @@
       <div *ngIf="session.isAuthenticated">
         <div class="header-actions">
           <a routerLink="/" class="nav-link nav-text">Logged in as: {{session.user.username}}</a>
-          <a (click)="logout()" class="nav-link nav-text">
+          <a (click)="emitLogOut()" class="nav-link nav-text">
             <clr-icon shape="logout"></clr-icon>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="!session.isAuthenticated">
+        <div class="header-actions">
+          <a routerLink="/login" class="nav-link nav-text">
+            <clr-icon shape="login"></clr-icon>
           </a>
         </div>
       </div>

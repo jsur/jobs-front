@@ -28,7 +28,7 @@ a {
 
 /* Common styles - classes */
 
-.header-nav:hover {
+.header-nav a:hover {
   background-color: #007E7A;
 }
 

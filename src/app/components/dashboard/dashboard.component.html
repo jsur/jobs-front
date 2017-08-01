@@ -1,4 +1,8 @@
-<app-header (plusButton)="newLead()"></app-header>
+<app-header
+  (plusButton)="newLead()"
+  (logOut)="logout()"
+  >
+</app-header>
 
 <app-dashboard-newlead [hidden]="!newLeadActive" (modalClosed)="onModalClosed()"></app-dashboard-newlead>
 

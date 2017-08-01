@@ -20,6 +20,7 @@ a {
   width: 64px;
   height: 64px;
   margin: auto 2%;
+  border-radius: 5px;
 }
 
 .lead-text {

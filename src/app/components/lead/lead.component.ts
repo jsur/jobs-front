@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { LeadService } from '../../services/lead.service';
 
 @Component({
@@ -27,8 +28,19 @@ export class LeadComponent implements OnInit {
     this.lead.getLead(id)
       .subscribe(
         data => {
-          console.log(data);
           this.individualLead = data;
+          console.log(this.individualLead);
+          switch (this.individualLead['status']) {
+            case 'contacted': this.individualLead['status'] = 'Contacted'
+            break;
+            case 'replyreceived': this.individualLead['status'] = 'Reply received'
+            break;
+            case 'interview': this.individualLead['status'] = 'Interview'
+            break;
+            case 'done': this.individualLead['status'] = 'Done'
+            break;
+            default: this.individualLead['status'] = 'Invalid status';
+          };
         },
         err => {
           console.log(err);
