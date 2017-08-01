@@ -49,7 +49,7 @@ export class DashboardNewleadComponent implements OnInit {
     this.modalClosed.emit();
   }
 
-  getGlassDoorCompany(company: string) {
+  getGlassDoorCompany(company: string, form: NgForm) {
 
     if (company.length > 2) {
 
@@ -60,7 +60,10 @@ export class DashboardNewleadComponent implements OnInit {
           data => {
             if (data.response.employers.length > 0) {
               this.companyRating.push(data.response.employers[0]);
-              console.log(this.companyRating);
+              // Set logourl from API data
+              form.controls.logourl.markAsDirty();
+              form.controls.logourl.markAsTouched();
+              form.controls.logourl.setValue(data.response.employers[0].squareLogo);
             }
           },
           err => {
