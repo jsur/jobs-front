@@ -26,7 +26,7 @@ export class SessionService {
     private router: Router) { }
 
   login(user) {
-    return this.http.post(`${this.url}/login`, user)
+    return this.http.post(`${this.url}/auth/login`, user)
       .map(res => {
         const json = res.json();
         const token = json.token;
@@ -70,7 +70,7 @@ export class SessionService {
       const headers = new Headers({ 'Authorization': `JWT ${token}` });
       const options = new RequestOptions({ headers: headers });
 
-      return this.http.get(`${this.url}/auth`, options)
+      return this.http.get(`${this.url}/auth/auth`, options)
         .map((data) => {
           if (data) {
             const json = data.json();

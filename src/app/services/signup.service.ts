@@ -10,15 +10,13 @@ export class SignupService {
   constructor(private http: Http) { }
 
   signup(user) {
-    return this.http.post(`${this.url}/signup`, user)
+    return this.http.post(`${this.url}/auth/signup`, user)
       .subscribe(
         data => {
           console.log('signup ok!');
-          // localStorage.setItem('flash-success', 'Signup successful!');
         },
         err => {
           console.log(err);
-          // localStorage.setItem('flash-error', JSON.parse(err._body).message);
         }
     );
   }

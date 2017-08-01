@@ -1,6 +1,6 @@
 <div class="lead-cards">
   <div *ngFor="let lead of leads">
-    <a routerLink="/">
+    <a routerLink="/lead/{{lead._id}}">
       <div class="lead-card">
         <img src="{{lead.logourl}}" alt="Logo">
         <div class="lead-text">
