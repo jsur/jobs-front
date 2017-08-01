@@ -23,6 +23,7 @@ import { DashboardLeadcardComponent } from './components/dashboard-leadcard/dash
 import { DashboardNewleadComponent } from './components/dashboard-newlead/dashboard-newlead.component';
 import { LeadComponent } from './components/lead/lead.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LeadEditComponent } from './components/lead-edit/lead-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HeaderComponent } from './components/header/header.component';
     DashboardLeadcardComponent,
     DashboardNewleadComponent,
     LeadComponent,
-    HeaderComponent
+    HeaderComponent,
+    LeadEditComponent
   ],
   imports: [
     BrowserModule,

@@ -11,12 +11,21 @@ import { LeadService } from '../../services/lead.service';
 export class LeadComponent implements OnInit {
 
   individualLead: Object = {};
+  editLeadActive = false;
 
   constructor(
-    private lead: LeadService,
-    private router: Router,
+    private leads: LeadService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.leads.editEvent$.subscribe(
+      data => {
+        this.toggleEditLead();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -25,11 +34,10 @@ export class LeadComponent implements OnInit {
   }
 
   getLead(id: string) {
-    this.lead.getLead(id)
+    this.leads.getLead(id)
       .subscribe(
         data => {
           this.individualLead = data;
-          console.log(this.individualLead);
           switch (this.individualLead['status']) {
             case 'contacted': this.individualLead['status'] = 'Contacted'
             break;
@@ -46,6 +54,10 @@ export class LeadComponent implements OnInit {
           console.log(err);
         }
       )
+  }
+
+  toggleEditLead() {
+    this.editLeadActive = !this.editLeadActive;
   }
 
 }

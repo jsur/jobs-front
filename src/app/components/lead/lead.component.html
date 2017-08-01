@@ -1,4 +1,7 @@
 <app-header></app-header>
+
+<app-lead-edit [editableLead]="individualLead" [hidden]="!editLeadActive" (modalClosed)="toggleEditLead()"></app-lead-edit>
+
 <div *ngIf="individualLead" class="page-content">
   <div class="flex-container">
     <div class="main-col main-col-1">

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import { LeadService } from '../../services/lead.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private router: Router
+    private leads: LeadService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -31,8 +34,9 @@ export class HeaderComponent implements OnInit {
     this.logOut.emit();
   }
 
-  editLead() {
-    console.log('call service hello');
+  emitEditLead() {
+    const id = this.route.url['value'][1].path;
+    this.leads.announceEditLead(id);
   }
 
 }

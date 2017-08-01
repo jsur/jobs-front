@@ -15,10 +15,12 @@ export class LeadService {
 
   url: string = environment.base_url;
 
-  // Observable object source
+  // Observable object sources
   private newEventSource = new Subject<Object>();
+  private editEventSource = new Subject<Object>();
   // Observable object stream
   newEvent$ = this.newEventSource.asObservable();
+  editEvent$ = this.editEventSource.asObservable();
 
   constructor(private http: Http) { }
 
@@ -46,6 +48,10 @@ export class LeadService {
 
   announceNewLead(lead: Lead) {
     this.newEventSource.next(lead);
+  }
+
+  announceEditLead(id: string) {
+    this.editEventSource.next(id);
   }
 
 }

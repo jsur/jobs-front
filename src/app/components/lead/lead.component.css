@@ -30,6 +30,7 @@ body {
   width: 192px;
   height: 192px;
   border-radius: 5px;
+  user-select: none;
 }
 
 .topic-text {
