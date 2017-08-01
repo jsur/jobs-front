@@ -13,9 +13,9 @@ export class HeaderComponent implements OnInit {
   @Output() logOut = new EventEmitter();
 
   constructor(
-    private session: SessionService,
+    public session: SessionService,
     private leads: LeadService,
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute
   ) { }
 

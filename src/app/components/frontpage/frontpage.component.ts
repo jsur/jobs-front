@@ -10,8 +10,8 @@ import { SessionService } from '../../services/session.service';
 export class FrontpageComponent {
 
   constructor(
-    private flashMessagesService: FlashMessagesService,
-    private session: SessionService
+    public flashMessagesService: FlashMessagesService,
+    public session: SessionService
   ) { }
 
   logout() {

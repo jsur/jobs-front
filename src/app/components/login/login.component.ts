@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 
+export class LoggedUser {
+  username: string;
+  password: string;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +14,10 @@ import { SessionService } from '../../services/session.service';
 })
 export class LoginComponent {
 
-  user: Object = {};
+  user: LoggedUser = {
+    username: '',
+    password: ''
+  };
 
   constructor(
     private session: SessionService,

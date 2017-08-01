@@ -34,7 +34,7 @@ export class LeadService {
       .catch(this.handleError);
   }
 
-  createLead(newLead) {
+  createLead(newLead: Lead) {
     return this.http.post(`${this.url}/api/lead/new`, newLead)
       .map(res => res.json())
       .catch(this.handleError);
@@ -52,7 +52,7 @@ export class LeadService {
       .catch(this.handleError);
   }
 
-  announceNewLead(lead: Lead) {
+  announceNewLead(lead) {
     this.newEventSource.next(lead);
   }
 

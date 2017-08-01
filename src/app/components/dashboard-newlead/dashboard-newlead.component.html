@@ -31,10 +31,10 @@
                 <label for="contactperson-email">Contact person email </label>
                 <label for="contactperson-email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
                               <input
-                                type="email"
-                                name="contactpersonemail"
+                                type="text"
+                                name="contactperson-email"
                                 size="25"
-                                [(ngModel)]="newLead.contactpersonemail"
+                                [(ngModel)]="newLead.contactperson.email"
                                 #emailInput="ngModel"
                                 required
                                 email
@@ -48,7 +48,7 @@
                   type="text"
                   name="contactperson-name"
                   size="28"
-                  [(ngModel)]="newLead.contactpersonname"
+                  [(ngModel)]="newLead.contactperson.name"
                   >
               </div>
               <div class="form-group">

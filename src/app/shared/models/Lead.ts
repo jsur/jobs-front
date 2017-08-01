@@ -4,5 +4,5 @@ export class Lead {
   jobtitle: string;
   status: string;
   logourl: string;
-  contactperson: Object;
+  contactperson: {name: string, email: string}
 }

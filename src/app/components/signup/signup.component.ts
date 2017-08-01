@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../../services/signup.service';
 import { Router } from '@angular/router';
 
+export class NewUser {
+  username: string;
+  email: string;
+  password: string;
+}
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,7 +15,12 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  newUser: Object = {};
+  newUser: NewUser = {
+    username: '',
+    email: '',
+    password: ''
+  };
+
   response: Object;
 
   constructor(

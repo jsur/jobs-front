@@ -4,6 +4,7 @@ import { LeadService } from '../../services/lead.service';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { ExternalService } from '../../services/external.service';
+import { Lead } from '../../shared/models/Lead';
 
 @Component({
   selector: 'app-dashboard-newlead',
@@ -13,7 +14,17 @@ import { ExternalService } from '../../services/external.service';
 export class DashboardNewleadComponent implements OnInit {
   @Output() modalClosed = new EventEmitter();
 
-  newLead: Object = {};
+  newLead: Lead = {
+    owner: '',
+    company: '',
+    jobtitle: '',
+    status: '',
+    logourl: '',
+    contactperson: {
+      name: '',
+      email: ''
+    }
+  };
   companyRating: Array<Object> = [];
   searchedCompanyNameLength: number;
 
@@ -34,7 +45,8 @@ export class DashboardNewleadComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    this.newLead['owner'] = this.session.user._id;
+    this.newLead.owner = this.session.user._id;
+    console.log(this.newLead.contactperson);
     this.leads.createLead(this.newLead)
       .subscribe(
         data => {

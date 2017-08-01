@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { LeadService } from '../../services/lead.service';
 
 @Component({
@@ -20,7 +19,7 @@ export class LeadEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  close(form: NgForm) {
+  close() {
     this.modalClosed.emit();
   }
 
