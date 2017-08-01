@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LeadService } from '../../services/lead.service';
 import { SessionService } from '../../services/session.service';
@@ -10,17 +10,22 @@ import { ExternalService } from '../../services/external.service';
   templateUrl: './dashboard-newlead.component.html',
   styleUrls: ['./dashboard-newlead.component.css']
 })
-export class DashboardNewleadComponent {
+export class DashboardNewleadComponent implements OnInit {
   @Output() modalClosed = new EventEmitter();
 
   newLead: Object = {};
   companyRating: Array<Object> = [];
+  searchedCompanyNameLength: number;
 
   constructor(
     private leads: LeadService,
     private session: SessionService,
     private externals: ExternalService
   ) { }
+
+  ngOnInit() {
+
+  }
 
   close(form: NgForm) {
     this.cleanCompanyCard();
@@ -47,6 +52,9 @@ export class DashboardNewleadComponent {
   getGlassDoorCompany(company: string) {
 
     if (company.length > 2) {
+
+      this.searchedCompanyNameLength = this.getCompanyNameLength(company);
+
       this.externals.glassDoorData(company)
         .subscribe(
           data => {
@@ -64,6 +72,16 @@ export class DashboardNewleadComponent {
 
   cleanCompanyCard() {
     this.companyRating = [];
+  }
+
+  watchFieldChanges(field) {
+    if (field.model !== undefined && field.model !== null && field.model.length < this.searchedCompanyNameLength) {
+      this.cleanCompanyCard();
+    }
+  }
+
+  getCompanyNameLength(string) {
+    return string.length;
   }
 
 }

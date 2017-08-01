@@ -21,6 +21,7 @@
                             [(ngModel)]="newLead.company"
                             #companyInput="ngModel"
                             (blur)="getGlassDoorCompany(newLead.company)"
+                            (keydown)="watchFieldChanges(companyInput)"
                             required
                             >
                           <span class="tooltip-content">Company is required.</span>
