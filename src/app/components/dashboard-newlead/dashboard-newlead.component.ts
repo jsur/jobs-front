@@ -22,7 +22,9 @@ export class DashboardNewleadComponent {
     private externals: ExternalService
   ) { }
 
-  close() {
+  close(form: NgForm) {
+    this.cleanCompanyCard();
+    form.reset();
     this.modalClosed.emit();
   }
 
@@ -38,6 +40,7 @@ export class DashboardNewleadComponent {
         }
       );
     form.reset();
+    this.cleanCompanyCard();
     this.modalClosed.emit();
   }
 
@@ -57,6 +60,10 @@ export class DashboardNewleadComponent {
           }
         )
     }
+  }
+
+  cleanCompanyCard() {
+    this.companyRating = [];
   }
 
 }
