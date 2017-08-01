@@ -21,6 +21,8 @@ import { ExternalService } from './services/external.service';
 import { DashboardColumnsComponent } from './components/dashboard-columns/dashboard-columns.component';
 import { DashboardLeadcardComponent } from './components/dashboard-leadcard/dashboard-leadcard.component';
 import { DashboardNewleadComponent } from './components/dashboard-newlead/dashboard-newlead.component';
+import { LeadComponent } from './components/lead/lead.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { DashboardNewleadComponent } from './components/dashboard-newlead/dashbo
     FrontpageComponent,
     DashboardColumnsComponent,
     DashboardLeadcardComponent,
-    DashboardNewleadComponent
+    DashboardNewleadComponent,
+    LeadComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

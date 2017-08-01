@@ -38,6 +38,12 @@ export class LeadService {
       .catch(this.handleError);
   }
 
+  getLead(id) {
+    return this.http.get(`${this.url}/lead/${id}`)
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+
   announceNewLead(lead: Lead) {
     this.newEventSource.next(lead);
   }

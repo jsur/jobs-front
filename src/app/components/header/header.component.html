@@ -1,0 +1,29 @@
+<header id="custom-header" class="header">
+
+  <div *ngIf="router.url=='/dashboard'">
+    <div class="header-nav">
+      <a (click)="emitNewLead()" class="active nav-link nav-text">
+        <clr-icon shape="plus"></clr-icon>
+      </a>
+    </div>
+  </div>
+
+    <div *ngIf="router.url.includes('lead')">
+      <div class="header-nav">
+        <a (click)="goBack()" class="active nav-link nav-text">
+          <clr-icon shape="caret left"></clr-icon>
+        </a>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div *ngIf="session.isAuthenticated">
+        <div class="header-actions">
+          <a routerLink="/" class="nav-link nav-text">Logged in as: {{session.user.username}}</a>
+          <a (click)="logout()" class="nav-link nav-text">
+            <clr-icon shape="logout"></clr-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+</header>
