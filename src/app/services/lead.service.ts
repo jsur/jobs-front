@@ -46,6 +46,12 @@ export class LeadService {
       .catch(this.handleError);
   }
 
+  updateLead(id, lead) {
+    return this.http.put(`${this.url}/api/lead/${id}`, lead)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
   announceNewLead(lead: Lead) {
     this.newEventSource.next(lead);
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { LeadService } from '../../services/lead.service';
 
 @Component({
   selector: 'app-lead-edit',
@@ -10,7 +12,10 @@ export class LeadEditComponent implements OnInit {
   @Output() modalClosed = new EventEmitter();
   @Input() editableLead;
 
-  constructor() { }
+  constructor(
+    private leads: LeadService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -19,8 +24,17 @@ export class LeadEditComponent implements OnInit {
     this.modalClosed.emit();
   }
 
-  submitEdit(form: NgForm) {
-    console.log(form);
+  submitEdit() {
+    this.leads.updateLead(this.editableLead._id, this.editableLead)
+      .subscribe(
+        data => {
+          this.leads.announceNewLead(data.lead);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    this.modalClosed.emit();
   }
 
 }
