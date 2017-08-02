@@ -57,18 +57,17 @@ a {
 
 /* Flashes */
 
-.flash {
-  height: 30px;
-  width: 70%;
-  border-radius: 5px;
+#flashMessages, .flash-message {
+  background-color: #F5F5F5 !important;
+  border: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  height: 40px !important;
 }
 
-.flash-success {
-  background-color: lightgreen;
-}
-
-.flash-error {
-  background-color: tomato;
+.flash-message p {
+  margin: 5px auto !important;
+  font-weight: bold !important;
 }
 
 

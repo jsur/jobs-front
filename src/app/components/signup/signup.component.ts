@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
   onSubmit(form) {
     this.response = this.signupService.signup(this.newUser);
     form.reset();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
 
    }
 

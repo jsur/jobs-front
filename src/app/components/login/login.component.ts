@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class LoggedUser {
   username: string;
@@ -12,7 +13,7 @@ export class LoggedUser {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   user: LoggedUser = {
     username: '',
@@ -21,8 +22,13 @@ export class LoginComponent {
 
   constructor(
     private session: SessionService,
-    private router: Router
+    private router: Router,
+    public flash: FlashMessagesService
   ) { }
+
+  ngOnInit() {
+    this.flash.show('Dashboard text!', { cssClass: 'alert-danger', timeout: 500000 });
+  }
 
   login() {
     this.session.login(this.user).subscribe(

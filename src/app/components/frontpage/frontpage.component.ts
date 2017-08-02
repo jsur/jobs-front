@@ -1,5 +1,4 @@
 import { Component, AfterViewChecked } from '@angular/core';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { SessionService } from '../../services/session.service';
 
 @Component({
@@ -9,10 +8,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class FrontpageComponent {
 
-  constructor(
-    public flashMessagesService: FlashMessagesService,
-    public session: SessionService
-  ) { }
+  constructor(public session: SessionService) { }
 
   logout() {
     this.session.logout();
