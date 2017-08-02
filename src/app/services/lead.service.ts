@@ -41,13 +41,19 @@ export class LeadService {
   }
 
   getLead(id) {
-    return this.http.get(`${this.url}/lead/${id}`)
+    return this.http.get(`${this.url}/api/lead/${id}`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   updateLead(id, lead) {
     return this.http.put(`${this.url}/api/lead/${id}`, lead)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  deleteLead(id: string) {
+    return this.http.delete(`${this.url}/api/lead/${id}`)
       .map(res => res.json())
       .catch(this.handleError);
   }

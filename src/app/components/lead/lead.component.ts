@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { LeadService } from '../../services/lead.service';
 import { Observable } from 'rxjs/Rx';
 import { LeadstatusPipe } from '../../pipes/leadstatus.pipe';
+import { Lead } from '../../shared/models/Lead';
 
 @Component({
   selector: 'app-lead',
@@ -12,12 +13,23 @@ import { LeadstatusPipe } from '../../pipes/leadstatus.pipe';
 })
 export class LeadComponent implements OnInit {
 
-  individualLead: Object = {};
+  individualLead: Lead = {
+    owner: '',
+    company: '',
+    jobtitle: '',
+    status: '',
+    logourl: '',
+    contactperson: {
+      name: '',
+      email: ''
+    }
+  };
   editLeadActive = false;
 
   constructor(
     private leads: LeadService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.leads.editEvent$.subscribe(
       data => {
@@ -49,6 +61,19 @@ export class LeadComponent implements OnInit {
 
   toggleEditLead() {
     this.editLeadActive = !this.editLeadActive;
+  }
+
+  deleteLead() {
+    this.leads.deleteLead(this.individualLead['_id'])
+      .subscribe(
+        data => {
+          console.log('lead delete data:', data);
+          this.router.navigate(['dashboard']);
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
   handleError(e) {

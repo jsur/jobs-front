@@ -22,6 +22,12 @@ a {
   border-radius: 0;
 }
 
+#custom-button-delete {
+  background-color: tomato;
+  border: none;
+  border-radius: 0;
+}
+
 #custom-button:hover {
   background-color: #00D4B8;
 }
