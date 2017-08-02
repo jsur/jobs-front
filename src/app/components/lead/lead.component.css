@@ -48,6 +48,10 @@ body {
   font-weight: bold;
 }
 
+.lead-delete-button {
+  margin-top: 5rem;
+}
+
 /* Mobile first queries */
 
 /* Larger than mobile */

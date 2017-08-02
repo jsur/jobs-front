@@ -20,8 +20,6 @@
   <div class="modal-backdrop" aria-hidden="true"></div>
 </div>
 
-
-
 <div *ngIf="individualLead" class="page-content">
   <div class="flex-container">
     <div class="main-col main-col-1">
@@ -44,7 +42,7 @@
         <h4>{{individualLead.contactperson?.name}}</h4>
         <h4>{{individualLead?.contactperson?.email}}</h4>
       </div>
-      <button id="custom-button-delete" class="btn" type="button" name="deletelead" (click)="toggleDeleteLead()">Delete lead</button>
+      <button id="custom-button-delete" class="btn lead-delete-button" type="button" name="deletelead" (click)="toggleDeleteLead()">Delete lead</button>
     </div>
     <div class="main-col main-col-2">
 

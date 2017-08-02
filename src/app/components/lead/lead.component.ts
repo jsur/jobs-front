@@ -23,7 +23,8 @@ export class LeadComponent implements OnInit {
       name: '',
       email: ''
     }
-  };
+  }
+
   editLeadActive = false;
   deleteLeadActive = false;
 
