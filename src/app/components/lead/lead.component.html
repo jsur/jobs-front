@@ -2,6 +2,26 @@
 
 <app-lead-edit [editableLead]="individualLead" [hidden]="!editLeadActive" (modalClosed)="toggleEditLead()"></app-lead-edit>
 
+<div [hidden]="!deleteLeadActive" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm lead delete</h3>
+            </div>
+            <div class="modal-body">
+                <p>Press delete to remove lead. Cancel to go back.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="custom-button-cancel" class="btn" type="button" (click)="toggleDeleteLead()">Cancel</button>
+                <button id="custom-button-delete" class="btn" type="button" (click)="deleteLead()">Delete</button>
+            </div>
+        </div>
+    </div>
+  <div class="modal-backdrop" aria-hidden="true"></div>
+</div>
+
+
+
 <div *ngIf="individualLead" class="page-content">
   <div class="flex-container">
     <div class="main-col main-col-1">
@@ -24,7 +44,7 @@
         <h4>{{individualLead.contactperson?.name}}</h4>
         <h4>{{individualLead?.contactperson?.email}}</h4>
       </div>
-      <button id="custom-button-delete" type="button" name="deletelead" (click)="deleteLead()">Delete lead</button>
+      <button id="custom-button-delete" class="btn" type="button" name="deletelead" (click)="toggleDeleteLead()">Delete lead</button>
     </div>
     <div class="main-col main-col-2">
 

@@ -20,16 +20,33 @@ a {
   background-color: #00AB9A;
   border-color: #00968B;
   border-radius: 0;
+  color: black;
+}
+
+#custom-button:hover {
+  background-color: #00D4B8;
+}
+
+#custom-button-cancel {
+  background-color: white;
+  border-color: #00968B;
+  border-radius: 0;
+  color: black;
+}
+
+#custom-button-cancel:hover {
+  background-color: #f4efef;
 }
 
 #custom-button-delete {
   background-color: tomato;
   border: none;
   border-radius: 0;
+  color: black;
 }
 
-#custom-button:hover {
-  background-color: #00D4B8;
+#custom-button-delete:hover {
+  background-color: #e94122;
 }
 
 /* Common styles - classes */

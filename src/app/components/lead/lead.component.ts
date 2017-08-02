@@ -25,6 +25,7 @@ export class LeadComponent implements OnInit {
     }
   };
   editLeadActive = false;
+  deleteLeadActive = false;
 
   constructor(
     private leads: LeadService,
@@ -61,6 +62,10 @@ export class LeadComponent implements OnInit {
 
   toggleEditLead() {
     this.editLeadActive = !this.editLeadActive;
+  }
+
+  toggleDeleteLead() {
+    this.deleteLeadActive = !this.deleteLeadActive;
   }
 
   deleteLead() {
