@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { LeadService } from '../../services/lead.service';
 
@@ -7,16 +7,24 @@ import { LeadService } from '../../services/lead.service';
   templateUrl: './lead-edit.component.html',
   styleUrls: ['./lead-edit.component.css']
 })
-export class LeadEditComponent implements OnInit {
+export class LeadEditComponent implements OnChanges {
   @Output() modalClosed = new EventEmitter();
   @Input() editableLead;
+
+  statusOpts = {
+    contacted: 'contacted',
+    replyreceived: 'replyreceived',
+    interview: 'interview',
+    done: 'done'
+  }
 
   constructor(
     private leads: LeadService,
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnChanges() {
+
   }
 
   close() {
@@ -27,13 +35,12 @@ export class LeadEditComponent implements OnInit {
     this.leads.updateLead(this.editableLead._id, this.editableLead)
       .subscribe(
         data => {
-          this.leads.announceNewLead(data.lead);
+          this.modalClosed.emit();
         },
         err => {
           console.log(err);
         }
       );
-    this.modalClosed.emit();
   }
 
 }

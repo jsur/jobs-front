@@ -46,7 +46,6 @@ export class DashboardNewleadComponent implements OnInit {
 
   submit(form: NgForm) {
     this.newLead.owner = this.session.user._id;
-    console.log(this.newLead.contactperson);
     this.leads.createLead(this.newLead)
       .subscribe(
         data => {

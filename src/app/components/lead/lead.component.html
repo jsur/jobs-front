@@ -15,7 +15,7 @@
       </div>
       <div class="lead-info">
         <h3>Lead status</h3>
-        <h4>{{individualLead.status}}</h4>
+        <h4>{{individualLead.status | leadstatus}}</h4>
         <h3>Lead created</h3>
         <h4>{{individualLead.created_at | date:'longDate'}}</h4>
       </div>

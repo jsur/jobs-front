@@ -24,6 +24,7 @@ import { DashboardNewleadComponent } from './components/dashboard-newlead/dashbo
 import { LeadComponent } from './components/lead/lead.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LeadEditComponent } from './components/lead-edit/lead-edit.component';
+import { LeadstatusPipe } from './pipes/leadstatus.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LeadEditComponent } from './components/lead-edit/lead-edit.component';
     DashboardNewleadComponent,
     LeadComponent,
     HeaderComponent,
-    LeadEditComponent
+    LeadEditComponent,
+    LeadstatusPipe
   ],
   imports: [
     BrowserModule,

@@ -88,7 +88,6 @@
                   name="logourl"
                   size="28"
                   [(ngModel)]="newLead.logourl"
-                  value="{{companyRating[0]?.squareLogo}}"
                   >
               </div>
 
@@ -100,7 +99,7 @@
         <div *ngIf="companyRating.length > 0" class="modalcards">
             <div class="card">
               <div id="card-picname" class="card-img">
-                <img id="card-image" src="{{companyRating[0].squareLogo}}" alt="No logo found." />
+                <img id="card-image" src="{{companyRating[0]?.squareLogo}}" alt="No logo found." />
                 <span class="companyname">{{companyRating[0].name}}</span>
               </div>
               <div class="card-block">
