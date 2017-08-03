@@ -1,10 +1,18 @@
-<form #signup="ngForm" (ngSubmit)="onSubmit(signup)">
-  <h2>Signup</h2>
-  <label for="username">Username</label>
-  <input type="text" [(ngModel)]="newUser.username" name="username" value="">
-  <label for="email">Email</label>
-  <input type="text" [(ngModel)]="newUser.email" name="email" value="">
-  <label for="password">Password</label>
-  <input type="password" [(ngModel)]="newUser.password" name="password" value="">
-  <button name="button">Sign up</button>
-</form>
+<div class="signup-container">
+  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+    <h2>Signup</h2>
+    <label for="username">Username</label>
+    <input type="text" [(ngModel)]="newUser.username" name="username" value="" required>
+    <label for="email">Email</label>
+    <input type="text" [(ngModel)]="newUser.email" name="email" value="" required>
+    <label for="password">Password</label>
+    <input type="password" [(ngModel)]="newUser.password" name="password" value="" minlength="3" required>
+    <button
+      id="custom-button"
+      name="button"
+      class="btn btn-primary"
+      [disabled]="!signupForm.valid"
+      >
+      Sign up</button>
+  </form>
+</div>

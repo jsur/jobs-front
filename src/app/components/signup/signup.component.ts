@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { SignupService } from '../../services/signup.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Rx';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class NewUser {
   username: string;
@@ -13,7 +16,7 @@ export class NewUser {
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnDestroy {
 
   newUser: NewUser = {
     username: '',
@@ -21,21 +24,30 @@ export class SignupComponent implements OnInit {
     password: ''
   };
 
-  response: Object;
+  response: Subscription;
 
   constructor(
     private signupService: SignupService,
-    private router: Router
+    private router: Router,
+    private flash: FlashMessagesService
   ) { }
 
-  ngOnInit() {
+  ngOnDestroy() {
   }
 
   onSubmit(form) {
-    this.response = this.signupService.signup(this.newUser);
-    form.reset();
-    this.router.navigate(['/login']);
-
+    this.signupService.signup(this.newUser)
+      .subscribe(
+        data => {
+          if (data.status === 200) {
+            this.flash.show('Signup successful. Would you like to log in?', { cssClass: 'alert-success', timeout: 4000 });
+            form.reset();
+            this.router.navigate(['login']);
+          }
+        },
+        err => {
+          this.flash.show(`Signup unsuccessful: ${err}.`, { cssClass: 'alert-danger', timeout: 4000 });
+        }
+      )
    }
-
 }
