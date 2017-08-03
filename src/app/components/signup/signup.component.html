@@ -1,5 +1,5 @@
 <div class="signup-container">
-  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+  <form class="signupform" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
     <h2>Signup</h2>
     <label for="username">Username</label>
     <input type="text" [(ngModel)]="newUser.username" name="username" value="" required>

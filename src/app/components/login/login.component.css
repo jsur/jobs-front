@@ -1,4 +1,50 @@
 .login-container {
   min-height: 100vh;
   background-color: #F5F5F5;
+  display: flex;
 }
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 100%;
+}
+
+.loginform h2 {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+button {
+  margin: 30px auto;
+  width: 40%;
+}
+
+label, input {
+  margin-top: 10px;
+}
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+@media (min-width: 600px) {
+  .loginform {
+    width: 450px;
+    margin: 0 auto;
+  }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
