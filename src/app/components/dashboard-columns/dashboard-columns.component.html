@@ -1,29 +1,31 @@
 <div class="columns">
+
   <div class="lead-col lead-contacted">
     <p class="col-header">Contacted</p>
     <div *ngIf="leadsContacted">
-      <app-dashboard-leadcard [leads]="leadsContacted"></app-dashboard-leadcard>
+      <app-dashboard-leadcard id="contacted" [leads]="leadsContacted"></app-dashboard-leadcard>
     </div>
   </div>
 
   <div class="lead-col lead-replyreceived">
     <p class="col-header">Reply received</p>
     <div *ngIf="leadsReplyReceived">
-      <app-dashboard-leadcard [leads]="leadsReplyReceived"></app-dashboard-leadcard>
+      <app-dashboard-leadcard id="replyreceived" [leads]="leadsReplyReceived"></app-dashboard-leadcard>
     </div>
   </div>
 
   <div class="lead-col lead-interview">
     <p class="col-header">Interview</p>
     <div *ngIf="leadsInterview">
-      <app-dashboard-leadcard [leads]="leadsInterview"></app-dashboard-leadcard>
+      <app-dashboard-leadcard id="interview" [leads]="leadsInterview"></app-dashboard-leadcard>
     </div>
   </div>
 
   <div class="lead-col lead-done">
     <p class="col-header">Done</p>
     <div *ngIf="leadsDone">
-      <app-dashboard-leadcard [leads]="leadsDone"></app-dashboard-leadcard>
+      <app-dashboard-leadcard id="done" [leads]="leadsDone"></app-dashboard-leadcard>
     </div>
   </div>
+
 </div>

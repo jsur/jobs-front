@@ -1,3 +1,7 @@
+.lead-cards {
+  min-height: 150px;
+}
+
 a {
   text-decoration: none;
 }

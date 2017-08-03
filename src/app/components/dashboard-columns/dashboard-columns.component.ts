@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { LeadService } from '../../services/lead.service';
 import { SessionService } from '../../services/session.service';
 import { Observable } from 'rxjs/Rx';
 import { Lead } from '../../shared/models/Lead';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-dashboard-columns',
@@ -18,7 +19,8 @@ export class DashboardColumnsComponent implements OnInit {
 
   constructor(
     private leads: LeadService,
-    private session: SessionService
+    private session: SessionService,
+    private dragulaService: DragulaService
   ) {
     this.leads.newEvent$.subscribe(
       data => {
@@ -28,6 +30,27 @@ export class DashboardColumnsComponent implements OnInit {
         console.log(err);
       }
     )
+
+    dragulaService.drop
+      .subscribe((data) => {
+      // console.log('card being moved:', data[1].id);
+      // console.log('target col:', data[2].id);
+      this.leads.getLead(data[1].id)
+        .subscribe(
+          lead => {
+            lead['status'] = data[2].id ? data[2].id : data[2].parentNode.id;
+            this.leads.updateLead(lead._id, lead)
+              .subscribe(
+                update => {
+                  this.getLeads();
+                },
+                err => {
+                  console.log(err);
+                }
+              )
+          }
+        )
+    });
   }
 
   ngOnInit() {
@@ -48,5 +71,4 @@ export class DashboardColumnsComponent implements OnInit {
         }
       );
   }
-
 }

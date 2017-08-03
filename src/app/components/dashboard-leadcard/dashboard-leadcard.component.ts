@@ -8,9 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DashboardLeadcardComponent implements OnInit {
   @Input() leads;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }

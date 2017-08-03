@@ -1,5 +1,5 @@
-<div class="lead-cards">
-  <div *ngFor="let lead of leads">
+<div id="{{leads[0]?.status}}" class="lead-cards" [dragula]='"leadcards"'>
+  <div *ngFor="let lead of leads" id="{{lead._id}}">
     <a routerLink="/lead/{{lead._id}}">
       <div class="lead-card">
         <img src="{{lead.logourl}}" alt="Logo">
