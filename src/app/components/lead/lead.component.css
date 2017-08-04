@@ -88,9 +88,49 @@
   margin: 0 auto;
 }
 
+.new-entry-form button {
+  width: 100px;
+}
+
 .new-entry-form textarea {
   border: 1px solid lightgray;
 }
+
+.close-entry {
+  margin-left: 2rem;
+}
+
+.close-entry:hover {
+  fill: gray;
+}
+
+.timeline-content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.entry {
+  margin: 1rem;
+}
+
+.entry-date {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.entry-content {
+  margin: 0;
+}
+
+.remove-entry {
+  float: right;
+}
+
+.remove-entry:hover {
+  fill: tomato;
+}
+
 
 /* Mobile first queries */
 

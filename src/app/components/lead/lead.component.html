@@ -50,16 +50,30 @@
         <clr-icon class="note-icon" shape="note" size="48"></clr-icon>
       </div>
       <form class="new-entry-form" [hidden]="timelineEntryHidden" #timelineEntry="ngForm" (ngSubmit)="submitTimelineEntry(timelineEntry)">
-        <textarea id="content" name="content" [(ngModel)]="newEntry.content" required></textarea>
+        <textarea
+          id="content"
+          name="content"
+          [(ngModel)]="newEntry.content"
+          required>
+        </textarea>
         <button
-          type="submit"
           id="custom-button"
           class="btn btn-primary"
-          (click)="toggleTimelineEntry()"
           [disabled]="!timelineEntry.valid"
           >Save</button>
+        <clr-icon class="note-icon close-entry" shape="close" size="32" (click)="cancelTimelineEntry(timelineEntry)"></clr-icon>
       </form>
       <div class="timeline-content">
+        <div *ngIf="allTimelineEntries">
+          <div *ngFor="let entry of allTimelineEntries">
+            <div class="entry">
+              <p class="entry-date">{{entry.created_at | date:'longDate'}}</p>
+              <p class="entry-content">{{entry.content}}
+                <clr-icon id="{{entry._id}}" class="note-icon remove-entry" shape="trash" size="24" (click)="deleteTimelineEntry($event)"></clr-icon>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

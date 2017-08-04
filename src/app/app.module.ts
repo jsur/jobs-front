@@ -23,6 +23,7 @@ import { SessionService } from './services/session.service';
 import { SignupService } from './services/signup.service';
 import { LeadService } from './services/lead.service';
 import { ExternalService } from './services/external.service';
+import { TimelineService } from './services/timeline.service';
 
 import { appRouting } from './app.routing';
 
@@ -57,7 +58,8 @@ import { LeadstatusPipe } from './pipes/leadstatus.pipe';
     SessionService,
     SignupService,
     LeadService,
-    ExternalService
+    ExternalService,
+    TimelineService
   ],
   bootstrap: [AppComponent]
 })

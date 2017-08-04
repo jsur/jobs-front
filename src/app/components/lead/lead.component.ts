@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { LeadService } from '../../services/lead.service';
-import { Observable } from 'rxjs/Rx';
+import { TimelineService } from '../../services/timeline.service';
+import { SessionService } from '../../services/session.service';
 import { LeadstatusPipe } from '../../pipes/leadstatus.pipe';
 import { Lead } from '../../shared/models/Lead';
 import { Timeline } from '../../shared/models/Timeline';
@@ -34,11 +35,15 @@ export class LeadComponent implements OnInit {
     }
   }
 
+  allTimelineEntries: Array<Object>;
+
   editLeadActive = false;
   deleteLeadActive = false;
 
   constructor(
     private leads: LeadService,
+    private timeline: TimelineService,
+    private session: SessionService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -47,7 +52,7 @@ export class LeadComponent implements OnInit {
         this.toggleEditLead();
       },
       err => {
-        this.handleError(err);
+        console.log(err);
       }
     )
   }
@@ -56,6 +61,8 @@ export class LeadComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getLead(params['id']);
     });
+
+    this.getLeadTimelineEntries(this.route.snapshot.params['id']);
   }
 
   getLead(id: string) {
@@ -65,7 +72,7 @@ export class LeadComponent implements OnInit {
           this.individualLead = data;
         },
         err => {
-          this.handleError(err);
+          console.log(err);
         }
       )
   }
@@ -82,7 +89,6 @@ export class LeadComponent implements OnInit {
     this.leads.deleteLead(this.individualLead['_id'])
       .subscribe(
         data => {
-          console.log('lead delete data:', data);
           this.router.navigate(['dashboard']);
         },
         err => {
@@ -95,12 +101,52 @@ export class LeadComponent implements OnInit {
     this.timelineEntryHidden = !this.timelineEntryHidden;
   }
 
-  submitTimelineEntry(form) {
+  cancelTimelineEntry(form) {
     form.reset();
+    this.toggleTimelineEntry();
   }
 
-  handleError(e) {
-    return Observable.throw(e.json().message);
+  submitTimelineEntry(form) {
+
+    this.newEntry.owner = this.session.user._id;
+    this.newEntry.lead = this.route.snapshot.params['id'];
+
+    this.timeline.createTimelineEntry(this.newEntry)
+      .subscribe(
+        data => {
+          this.getLeadTimelineEntries(this.newEntry.lead);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+
+    form.reset();
+    this.toggleTimelineEntry();
+  }
+
+  getLeadTimelineEntries(id) {
+    this.timeline.getLeadTimeLineEntries(id)
+      .subscribe(
+        data => {
+          this.allTimelineEntries = data;
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+  deleteTimelineEntry(event) {
+    this.timeline.deleteTimelineEntry(event.target.parentNode.id)
+      .subscribe(
+        data => {
+          this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
 }
