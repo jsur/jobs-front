@@ -38,7 +38,9 @@ export class DashboardColumnsComponent implements OnInit {
       this.leads.getLead(data[1].id)
         .subscribe(
           lead => {
-            lead['status'] = data[2].id ? data[2].id : data[2].parentNode.id;
+            lead['status'] = data[2].parentNode.id;
+            console.log(getCardColIndex(data[1]));
+            lead['colIndex'] = getCardColIndex(data[1]);
             this.leads.updateLead(lead._id, lead)
               .subscribe(
                 update => {
@@ -71,4 +73,8 @@ export class DashboardColumnsComponent implements OnInit {
         }
       );
   }
+}
+
+function getCardColIndex(card) {
+  return Array.from(card.parentNode.children).indexOf(card);
 }
