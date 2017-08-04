@@ -28,7 +28,7 @@
         <div class="topic-text">
           <h2>{{individualLead.jobtitle}}</h2>
           <h3>{{individualLead.company}}</h3>
-          <p>Last updated: {{individualLead.updated_at | date:'yMMMMd'}}</p>
+          <p>Last updated: {{individualLead.updated_at | date:'longDate'}}</p>
         </div>
       </div>
       <div class="lead-info">
@@ -45,7 +45,22 @@
       <button id="custom-button-delete" class="btn lead-delete-button" type="button" name="deletelead" (click)="toggleDeleteLead()">Delete lead</button>
     </div>
     <div class="main-col main-col-2">
-
+      <h2>Lead timeline</h2>
+      <div class="new-entry" [hidden]="!timelineEntryHidden" (click)="toggleTimelineEntry()">
+        <clr-icon class="note-icon" shape="note" size="48"></clr-icon>
+      </div>
+      <form class="new-entry-form" [hidden]="timelineEntryHidden" #timelineEntry="ngForm" (ngSubmit)="submitTimelineEntry(timelineEntry)">
+        <textarea id="content" name="content" [(ngModel)]="newEntry.content" required></textarea>
+        <button
+          type="submit"
+          id="custom-button"
+          class="btn btn-primary"
+          (click)="toggleTimelineEntry()"
+          [disabled]="!timelineEntry.valid"
+          >Save</button>
+      </form>
+      <div class="timeline-content">
+      </div>
     </div>
   </div>
 </div>

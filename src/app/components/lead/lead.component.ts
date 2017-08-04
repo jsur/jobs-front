@@ -5,6 +5,7 @@ import { LeadService } from '../../services/lead.service';
 import { Observable } from 'rxjs/Rx';
 import { LeadstatusPipe } from '../../pipes/leadstatus.pipe';
 import { Lead } from '../../shared/models/Lead';
+import { Timeline } from '../../shared/models/Timeline';
 
 @Component({
   selector: 'app-lead',
@@ -12,6 +13,14 @@ import { Lead } from '../../shared/models/Lead';
   styleUrls: ['./lead.component.css']
 })
 export class LeadComponent implements OnInit {
+
+  timelineEntryHidden = true;
+
+  newEntry: Timeline = {
+    owner: '',
+    lead: '',
+    content: ''
+  }
 
   individualLead: Lead = {
     owner: '',
@@ -80,6 +89,14 @@ export class LeadComponent implements OnInit {
           console.log(err);
         }
       )
+  }
+
+  toggleTimelineEntry() {
+    this.timelineEntryHidden = !this.timelineEntryHidden;
+  }
+
+  submitTimelineEntry(form) {
+    form.reset();
   }
 
   handleError(e) {
