@@ -13,7 +13,7 @@ export class TimelineService {
   constructor(private http: Http) { }
 
   handleError(e) {
-    return Observable.throw(e.json().message);
+    return Observable.throw(e);
   }
 
   createTimelineEntry(newEntry: Timeline) {

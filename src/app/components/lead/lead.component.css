@@ -57,7 +57,6 @@
   flex-direction: column;
   color: #3F3F3F;
   padding: 4px;
-  overflow-y: scroll;
 }
 
 .main-col-2 h2 {
@@ -70,7 +69,7 @@
   width: 90%;
   margin: 0 auto;
   align-items: center;
-  border: 1px solid lightgray;
+  /*border: 1px solid lightgray;*/
   height: 5rem;
   border-radius: 5px;
 }
@@ -105,9 +104,11 @@
 }
 
 .timeline-content {
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 2rem auto 0 auto;
   padding: 5px;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .entry {
@@ -115,7 +116,7 @@
 }
 
 .entry-date {
-  margin: 1rem 0;
+  /*margin: 1rem 0;*/
   font-weight: bold;
 }
 
@@ -155,6 +156,10 @@
   }
   .main-col-2 {
     width: 50%;
+  }
+  .timeline-content {
+    margin: 2rem auto 0 auto;
+    width: 90%;
   }
 }
 
