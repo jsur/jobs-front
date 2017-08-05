@@ -52,7 +52,7 @@ export class DashboardColumnsComponent implements OnInit {
                   this.leads.updateLead(lead._id, lead)
                     .subscribe(
                       updatedLead => {
-                        // console.log(updatedLead);
+                        console.log(updatedLead);
                         // ????????? what happens when responses multiply?
                         // this.statusChangeTimelineEntry(data);
                       }
