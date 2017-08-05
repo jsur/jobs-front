@@ -20,7 +20,8 @@ export class LeadComponent implements OnInit {
   newEntry: Timeline = {
     owner: '',
     lead: '',
-    content: ''
+    content: '',
+    creator: 'manual'
   }
 
   individualLead: Lead = {

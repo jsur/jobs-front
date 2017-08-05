@@ -48,6 +48,7 @@ export class DashboardColumnsComponent implements OnInit {
               .subscribe(
                 lead => {
                   lead['status'] = data[2].parentNode.id;
+                  // this.statusChangeTimelineEntry(data);
                   this.leads.updateLead(lead._id, lead)
                     .subscribe(
                       updatedLead => {
@@ -98,7 +99,8 @@ export class DashboardColumnsComponent implements OnInit {
     this.newTimelineEntry = {
       owner: this.session.user._id,
       lead: data[1].id,
-      content: `Status change: Moved from ${movedFrom} to ${movedTo}.`
+      content: `Status change: Moved from ${movedFrom} to ${movedTo}.`,
+      creator: 'app'
     }
     this.timeline.createTimelineEntry(this.newTimelineEntry)
       .subscribe(

@@ -116,12 +116,16 @@
 }
 
 .entry-date {
-  /*margin: 1rem 0;*/
   font-weight: bold;
 }
 
+.entry-date clr-icon {
+  margin-left: 10px;
+}
+
 .entry-content {
-  margin: 0;
+  margin: 10px 0 0 0;
+  white-space: pre-line;
 }
 
 .remove-entry {

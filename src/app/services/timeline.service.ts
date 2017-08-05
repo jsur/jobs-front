@@ -30,7 +30,11 @@ export class TimelineService {
 
   deleteTimelineEntry(entryId) {
     return this.http.delete(`${this.url}/api/timeline/${entryId}`)
-      .map(res => res.json())
+      .map(res => {
+        console.log(res);
+        res.json()
+      }
+      )
       .catch(this.handleError);
     }
 

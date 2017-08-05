@@ -44,6 +44,7 @@
       </div>
       <button id="custom-button-delete" class="btn lead-delete-button" type="button" name="deletelead" (click)="toggleDeleteLead()">Delete lead</button>
     </div>
+
     <div class="main-col main-col-2">
       <h2>Lead timeline</h2>
       <div class="new-entry" [hidden]="!timelineEntryHidden" (click)="toggleTimelineEntry()">
@@ -63,11 +64,16 @@
           >Save</button>
         <clr-icon class="note-icon close-entry" shape="close" size="32" (click)="cancelTimelineEntry(timelineEntry)"></clr-icon>
       </form>
+
       <div class="timeline-content">
         <div *ngIf="allTimelineEntries">
           <div *ngFor="let entry of allTimelineEntries">
             <div class="entry">
-              <p class="entry-date">{{entry.created_at | date:'longDate'}}</p>
+              <p class="entry-date">{{entry.created_at | date:'longDate'}}
+                  <clr-icon *ngIf="entry.creator === 'email'" class="note-icon" shape="email" size="24"></clr-icon>
+                  <clr-icon *ngIf="entry.creator === 'manual'" class="note-icon" shape="user" size="24"></clr-icon>
+                  <clr-icon *ngIf="entry.creator === 'app'" class="note-icon" shape="display" size="24"></clr-icon>
+              </p>
               <p class="entry-content">{{entry.content}}
                 <clr-icon id="{{entry._id}}" class="note-icon remove-entry" shape="trash" size="24" (click)="deleteTimelineEntry($event)"></clr-icon>
               </p>
