@@ -154,4 +154,8 @@ export class LeadComponent implements OnInit {
   toggleEmailInfoModal() {
     this.emailInfoModalActive = !this.emailInfoModalActive;
   }
+
+  addAttachment() {
+    console.log('works!');
+  }
 }

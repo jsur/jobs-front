@@ -70,7 +70,8 @@
 }
 
 .new-entry,
-.new-mail-entry {
+.new-mail-entry,
+.new-entry-attachment {
   display: flex;
   width: 45%;
   margin: 0 auto;
@@ -81,7 +82,8 @@
 }
 
 .new-entry:hover,
-.new-mail-entry:hover {
+.new-mail-entry:hover,
+.new-entry-attachment:hover {
   background-color: #7ed7c8;
 }
 

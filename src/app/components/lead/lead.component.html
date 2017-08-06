@@ -76,6 +76,9 @@
         <div class="new-mail-entry" [hidden]="timelineEntryActive" (click)="toggleEmailInfoModal()">
           <clr-icon class="note-icon" shape="email" size="48"></clr-icon>
         </div>
+        <div class="new-entry-attachment" [hidden]="timelineEntryActive" (click)="addAttachment()">
+          <clr-icon class="note-icon" shape="file" size="48"></clr-icon>
+        </div>
       </div>
 
       <form class="new-entry-form" [hidden]="!timelineEntryActive" #timelineEntry="ngForm" (ngSubmit)="submitTimelineEntry(timelineEntry)">
