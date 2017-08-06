@@ -70,13 +70,13 @@
     <div class="main-col main-col-2">
       <h2>Lead timeline</h2>
       <div class="timeline-features">
-        <div class="new-entry" [hidden]="timelineEntryActive" (click)="toggleTimelineEntry()">
+        <div class="new-entry" [hidden]="timelineButtonsHidden" (click)="toggleTimelineEntry()">
           <clr-icon class="note-icon" shape="note" size="48"></clr-icon>
         </div>
-        <div class="new-mail-entry" [hidden]="timelineEntryActive" (click)="toggleEmailInfoModal()">
+        <div class="new-mail-entry" [hidden]="timelineButtonsHidden" (click)="toggleEmailInfoModal()">
           <clr-icon class="note-icon" shape="email" size="48"></clr-icon>
         </div>
-        <div class="new-entry-attachment" [hidden]="timelineEntryActive" (click)="addAttachment()">
+        <div class="new-entry-attachment" [hidden]="timelineButtonsHidden" (click)="toggleTimelineButtonsHidden()">
           <clr-icon class="note-icon" shape="file" size="48"></clr-icon>
         </div>
       </div>
@@ -95,6 +95,25 @@
           >Save</button>
         <clr-icon class="note-icon close-entry" shape="close" size="32" (click)="cancelTimelineEntry(timelineEntry)"></clr-icon>
       </form>
+
+      <div
+        [hidden]="!timelineButtonsHidden"
+        ng2FileDrop
+        [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+        (fileOver)="fileOverBase($event)"
+        [uploader]="uploader"
+        class="well my-drop-zone file-upload"
+        >
+        Drag file here
+      </div>
+      <div class="file-upload-actions" [hidden]="!timelineButtonsHidden">
+        <clr-icon class="note-icon upload-cancel" shape="close" size="32" (click)="closeAttachmentAdd()"></clr-icon>
+        <clr-icon class="note-icon upload-file" shape="upload-cloud" size="32" (click)="addAttachments()"></clr-icon>
+      </div>
+
+      <div *ngFor="let item of uploader.queue">
+        <p class="upload-item-name">{{ item?.file?.name }}</p>
+      </div>
 
       <div class="timeline-content">
         <div *ngIf="allTimelineEntries">

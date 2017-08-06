@@ -154,6 +154,39 @@
   fill: #7ed7c8;
 }
 
+/* File upload */
+
+.file-upload {
+  height: 80px;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 1.6rem;
+  font-weight: bold;
+  border: 1px dotted black;
+}
+
+.upload-item-name {
+  margin: 0;
+}
+
+.nv-file-over {
+  background-color: #7ed7c8;
+}
+
+.upload-file,
+.upload-cancel {
+  float: right;
+  margin: 10px;
+}
+
+.upload-file:hover {
+  fill: lightgreen;
+}
+
+.upload-cancel:hover {
+  fill: tomato;
+}
+
 
 /* Mobile first queries */
 

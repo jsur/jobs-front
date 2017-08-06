@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+
 import { LeadService } from '../../services/lead.service';
 import { TimelineService } from '../../services/timeline.service';
 import { SessionService } from '../../services/session.service';
+
 import { LeadstatusPipe } from '../../pipes/leadstatus.pipe';
+
 import { Lead } from '../../shared/models/Lead';
 import { Timeline } from '../../shared/models/Timeline';
+
+import { environment } from '../../../environments/environment';
+
+import {FileUploader} from 'ng2-file-upload';
+
 
 @Component({
   selector: 'app-lead',
@@ -15,6 +23,9 @@ import { Timeline } from '../../shared/models/Timeline';
 })
 export class LeadComponent implements OnInit {
 
+  url: string = environment.base_url;
+
+  timelineButtonsHidden = false;
   timelineEntryActive = false;
   emailInfoModalActive = false;
   editLeadActive = false;
@@ -40,6 +51,14 @@ export class LeadComponent implements OnInit {
   }
 
   allTimelineEntries: Array<Object>;
+
+  public uploader: FileUploader = new FileUploader({url: `${this.url}/api/fileupload`});
+  public hasBaseDropZoneOver = false;
+  public hasAnotherDropZoneOver = false;
+
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
+  }
 
   constructor(
     private leads: LeadService,
@@ -99,10 +118,6 @@ export class LeadComponent implements OnInit {
       )
   }
 
-  toggleTimelineEntry() {
-    this.timelineEntryActive = !this.timelineEntryActive;
-  }
-
   cancelTimelineEntry(form) {
     form.reset();
     this.toggleTimelineEntry();
@@ -155,7 +170,23 @@ export class LeadComponent implements OnInit {
     this.emailInfoModalActive = !this.emailInfoModalActive;
   }
 
-  addAttachment() {
+  toggleTimelineEntry() {
+    this.timelineEntryActive = !this.timelineEntryActive;
+    this.toggleTimelineButtonsHidden();
+  }
+
+  toggleTimelineButtonsHidden() {
+    this.timelineButtonsHidden = !this.timelineButtonsHidden;
+  }
+
+  closeAttachmentAdd() {
+    this.uploader.cancelAll();
+    this.uploader.clearQueue();
+    this.toggleTimelineButtonsHidden();
+  }
+
+  addAttachments() {
     console.log('works!');
+    this.uploader.uploadAll();
   }
 }

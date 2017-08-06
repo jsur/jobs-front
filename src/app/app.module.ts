@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ClarityModule } from 'clarity-angular';
 import { DragulaModule } from 'ng2-dragula';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { SessionService } from './services/session.service';
 import { SignupService } from './services/signup.service';
@@ -52,6 +53,7 @@ import { LeadstatusPipe } from './pipes/leadstatus.pipe';
     FlashMessagesModule,
     ClarityModule.forRoot(),
     DragulaModule,
+    FileUploadModule,
     appRouting
   ],
   providers: [
