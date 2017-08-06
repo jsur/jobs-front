@@ -76,7 +76,7 @@
         <div class="new-mail-entry" [hidden]="timelineButtonsHidden" (click)="toggleEmailInfoModal()">
           <clr-icon class="note-icon" shape="email" size="48"></clr-icon>
         </div>
-        <div class="new-entry-attachment" [hidden]="timelineButtonsHidden" (click)="toggleTimelineButtonsHidden()">
+        <div class="new-entry-attachment" [hidden]="timelineButtonsHidden" (click)="toggleAttachmentAdd()">
           <clr-icon class="note-icon" shape="file" size="48"></clr-icon>
         </div>
       </div>
@@ -97,7 +97,7 @@
       </form>
 
       <div
-        [hidden]="!timelineButtonsHidden"
+        [hidden]="!attachmentAddActive"
         ng2FileDrop
         [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
         (fileOver)="fileOverBase($event)"
@@ -106,7 +106,7 @@
         >
         Drag file here
       </div>
-      <div class="file-upload-actions" [hidden]="!timelineButtonsHidden">
+      <div class="file-upload-actions" [hidden]="!attachmentAddActive">
         <clr-icon class="note-icon upload-cancel" shape="close" size="32" (click)="closeAttachmentAdd()"></clr-icon>
         <clr-icon class="note-icon upload-file" shape="upload-cloud" size="32" (click)="addAttachments()"></clr-icon>
       </div>

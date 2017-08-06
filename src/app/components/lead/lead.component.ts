@@ -27,6 +27,7 @@ export class LeadComponent implements OnInit {
 
   timelineButtonsHidden = false;
   timelineEntryActive = false;
+  attachmentAddActive = false;
   emailInfoModalActive = false;
   editLeadActive = false;
   deleteLeadActive = false;
@@ -179,10 +180,15 @@ export class LeadComponent implements OnInit {
     this.timelineButtonsHidden = !this.timelineButtonsHidden;
   }
 
+  toggleAttachmentAdd() {
+    this.toggleTimelineButtonsHidden();
+    this.attachmentAddActive = !this.attachmentAddActive;
+  }
+
   closeAttachmentAdd() {
     this.uploader.cancelAll();
     this.uploader.clearQueue();
-    this.toggleTimelineButtonsHidden();
+    this.toggleAttachmentAdd();
   }
 
   addAttachments() {
