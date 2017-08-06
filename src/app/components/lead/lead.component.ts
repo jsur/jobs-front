@@ -53,7 +53,7 @@ export class LeadComponent implements OnInit {
 
   allTimelineEntries: Array<Object>;
 
-  public uploader: FileUploader = new FileUploader({url: `${this.url}/api/fileupload`});
+  public uploader: FileUploader = new FileUploader({url: `${this.url}/api/timeline/fileupload`});
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
 
@@ -193,6 +193,7 @@ export class LeadComponent implements OnInit {
 
   addAttachments() {
     console.log('works!');
+    console.log(this.uploader);
     this.uploader.uploadAll();
   }
 }

@@ -157,10 +157,10 @@
 /* File upload */
 
 .file-upload {
-  height: 80px;
+  height: 8rem;
   border-radius: 5px;
   text-align: center;
-  padding-top: 1.6rem;
+  padding-top: 2.5rem;
   font-weight: bold;
   border: 1px dotted black;
 }
