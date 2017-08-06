@@ -20,6 +20,28 @@
   <div class="modal-backdrop" aria-hidden="true"></div>
 </div>
 
+<div [hidden]="!emailInfoModalActive" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Send an email to this timeline!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Forward your email to this address:
+                  <br><strong id="mailaddress">744d98aedf9fa8b9b23c@cloudmailin.net</strong>
+                </p>
+                <p>Your email header has to be:
+                  <br><strong>{{individualLead._id}}</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button id="custom-button" class="btn btn-primary" type="button" (click)="toggleEmailInfoModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+  <div class="modal-backdrop" aria-hidden="true"></div>
+</div>
+
 <div *ngIf="individualLead" class="page-content">
   <div class="flex-container">
     <div class="main-col main-col-1">
@@ -47,10 +69,16 @@
 
     <div class="main-col main-col-2">
       <h2>Lead timeline</h2>
-      <div class="new-entry" [hidden]="!timelineEntryHidden" (click)="toggleTimelineEntry()">
-        <clr-icon class="note-icon" shape="note" size="48"></clr-icon>
+      <div class="timeline-features">
+        <div class="new-entry" [hidden]="timelineEntryActive" (click)="toggleTimelineEntry()">
+          <clr-icon class="note-icon" shape="note" size="48"></clr-icon>
+        </div>
+        <div class="new-mail-entry" [hidden]="timelineEntryActive" (click)="toggleEmailInfoModal()">
+          <clr-icon class="note-icon" shape="email" size="48"></clr-icon>
+        </div>
       </div>
-      <form class="new-entry-form" [hidden]="timelineEntryHidden" #timelineEntry="ngForm" (ngSubmit)="submitTimelineEntry(timelineEntry)">
+
+      <form class="new-entry-form" [hidden]="!timelineEntryActive" #timelineEntry="ngForm" (ngSubmit)="submitTimelineEntry(timelineEntry)">
         <textarea
           id="content"
           name="content"

@@ -15,7 +15,10 @@ import { Timeline } from '../../shared/models/Timeline';
 })
 export class LeadComponent implements OnInit {
 
-  timelineEntryHidden = true;
+  timelineEntryActive = false;
+  emailInfoModalActive = false;
+  editLeadActive = false;
+  deleteLeadActive = false;
 
   newEntry: Timeline = {
     owner: '',
@@ -37,9 +40,6 @@ export class LeadComponent implements OnInit {
   }
 
   allTimelineEntries: Array<Object>;
-
-  editLeadActive = false;
-  deleteLeadActive = false;
 
   constructor(
     private leads: LeadService,
@@ -64,6 +64,7 @@ export class LeadComponent implements OnInit {
     });
 
     this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+
   }
 
   getLead(id: string) {
@@ -99,7 +100,7 @@ export class LeadComponent implements OnInit {
   }
 
   toggleTimelineEntry() {
-    this.timelineEntryHidden = !this.timelineEntryHidden;
+    this.timelineEntryActive = !this.timelineEntryActive;
   }
 
   cancelTimelineEntry(form) {
@@ -150,4 +151,7 @@ export class LeadComponent implements OnInit {
       )
   }
 
+  toggleEmailInfoModal() {
+    this.emailInfoModalActive = !this.emailInfoModalActive;
+  }
 }
