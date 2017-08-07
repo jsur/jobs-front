@@ -4,4 +4,5 @@ export class Timeline {
   content: string;
   creator: string;
   fileurl: string;
+  filename: string;
 }

@@ -37,7 +37,8 @@ export class LeadComponent implements OnInit {
     lead: '',
     content: '',
     creator: 'manual',
-    fileurl: ''
+    fileurl: '',
+    filename: ''
   }
 
   individualLead: Lead = {
@@ -84,7 +85,8 @@ export class LeadComponent implements OnInit {
               lead: this.route.snapshot.params['id'],
               content: 'Uploaded attachment',
               creator: 'manual',
-              fileurl: this.itemUrl
+              fileurl: this.itemUrl,
+              filename: item.file.name
             })
               .subscribe(entry => {
                 this.getLeadTimelineEntries(this.route.snapshot.params['id']);

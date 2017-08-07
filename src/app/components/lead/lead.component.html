@@ -130,7 +130,7 @@
                   <clr-icon *ngIf="entry.creator === 'app'" class="note-icon" shape="display" size="24"></clr-icon>
               </p>
               <p class="entry-content">{{entry.content}}
-                <a *ngIf="entry.fileurl" href="{{entry.fileurl}}">Open</a>
+                <a *ngIf="entry.fileurl" href="{{entry.fileurl}}">{{entry.filename}}</a>
                 <clr-icon id="{{entry._id}}" class="note-icon remove-entry" shape="trash" size="24" (click)="deleteTimelineEntry($event)"></clr-icon>
               </p>
             </div>

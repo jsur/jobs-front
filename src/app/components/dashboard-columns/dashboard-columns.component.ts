@@ -104,7 +104,8 @@ export class DashboardColumnsComponent implements OnInit {
       lead: data[1].id,
       content: `Status change: Moved from ${movedFrom} to ${movedTo}.`,
       creator: 'app',
-      fileurl: ''
+      fileurl: '',
+      filename: ''
     }
     this.timeline.createTimelineEntry(this.newTimelineEntry)
       .subscribe(
