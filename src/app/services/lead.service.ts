@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
 import { Lead } from '../shared/models/Lead';
@@ -9,6 +9,11 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { environment } from '../../environments/environment';
+
+const token = localStorage.getItem('token');
+const headers = new Headers({ 'Authorization': `JWT ${token}` });
+const options = new RequestOptions({ headers: headers });
+
 
 @Injectable()
 export class LeadService {
@@ -29,31 +34,31 @@ export class LeadService {
   }
 
   getUserLeads(user) {
-    return this.http.get(`${this.url}/api/leads/${user._id}`)
+    return this.http.get(`${this.url}/api/leads/${user._id}`, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   createLead(newLead: Lead) {
-    return this.http.post(`${this.url}/api/lead/new`, newLead)
+    return this.http.post(`${this.url}/api/lead/new`, newLead, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   getLead(id) {
-    return this.http.get(`${this.url}/api/lead/${id}`)
+    return this.http.get(`${this.url}/api/lead/${id}`, options)
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   updateLead(id, lead) {
-    return this.http.put(`${this.url}/api/lead/${id}`, lead)
+    return this.http.put(`${this.url}/api/lead/${id}`, lead, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   deleteLead(id: string) {
-    return this.http.delete(`${this.url}/api/lead/${id}`)
+    return this.http.delete(`${this.url}/api/lead/${id}`, options)
       .map(res => res.json())
       .catch(this.handleError);
   }

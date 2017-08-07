@@ -43,16 +43,19 @@ export class DashboardColumnsComponent implements OnInit {
     this.dragulaService.drop
       .subscribe(
         data => {
+          console.log('drop');
           if (data[2].id !== data[3].id) {
             this.leads.getLead(data[1].id)
               .subscribe(
                 lead => {
+                  console.log('get');
                   lead['status'] = data[2].parentNode.id;
                   // this.statusChangeTimelineEntry(data);
                   this.leads.updateLead(lead._id, lead)
                     .subscribe(
                       updatedLead => {
-                        console.log(updatedLead);
+                        console.log('update');
+                        // console.log(updatedLead);
                         // ????????? what happens when responses multiply?
                         // this.statusChangeTimelineEntry(data);
                       }

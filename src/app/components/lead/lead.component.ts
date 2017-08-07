@@ -192,7 +192,6 @@ export class LeadComponent implements OnInit {
   }
 
   addAttachments() {
-    console.log('works!');
     console.log(this.uploader);
     this.uploader.uploadAll();
   }

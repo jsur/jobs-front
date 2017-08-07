@@ -5,4 +5,5 @@ export class Lead {
   status: string;
   logourl: string;
   contactperson: {name: string, email: string}
+
 }
