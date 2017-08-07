@@ -30,7 +30,7 @@
                 <p>Forward your email to this address:
                   <br><strong id="mailaddress">744d98aedf9fa8b9b23c@cloudmailin.net</strong>
                 </p>
-                <p>Your email header has to be:
+                <p>Your email subject has to be:
                   <br><strong>{{individualLead._id}}</strong>
                 </p>
             </div>
@@ -115,7 +115,7 @@
       <div *ngFor="let item of uploader.queue">
         <p class="upload-item-name">{{ item?.file?.name }}
           <clr-icon *ngIf="item?.isError" class="note-icon error-upload" shape="error" size="24"></clr-icon>
-          <clr-icon *ngIf="item?.isUploading" class="note-icon uploading" shape="clock" size="24"></clr-icon>
+          <span *ngIf="item?.isUploading" class="spinner spinner-sm uploading"></span>
           <clr-icon *ngIf="item?.isUploaded" class="note-icon uploaded" shape="check" size="24"></clr-icon>
         </p>
       </div>

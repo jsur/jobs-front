@@ -191,6 +191,10 @@
   fill: #18bfae;
 }
 
+.uploading {
+  margin-left: 2px;
+}
+
 .error-upload {
   fill: red;
 }

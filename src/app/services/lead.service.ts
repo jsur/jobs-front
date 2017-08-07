@@ -14,7 +14,6 @@ const token = localStorage.getItem('token');
 const headers = new Headers({ 'Authorization': `JWT ${token}` });
 const options = new RequestOptions({ headers: headers });
 
-
 @Injectable()
 export class LeadService {
 

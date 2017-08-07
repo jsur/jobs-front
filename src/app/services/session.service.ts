@@ -11,7 +11,6 @@ export class SessionUser {
   _id: string;
 }
 
-
 @Injectable()
 export class SessionService {
 
@@ -38,8 +37,8 @@ export class SessionService {
             _id: loggedInUser._id,
             username: loggedInUser.username
           }
-          this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
+          this.isAuthenticated = true;
         }
 
         return this.isAuthenticated;
