@@ -37,4 +37,10 @@ export class TimelineService {
       .map(res => res.json())
       .catch(this.handleError);
     }
+
+  getS3Credentials(filename, filetype) {
+    return this.http.get(`${this.url}/api/sign-s3?file-name=${filename}&file-type=${filetype}`, options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }

@@ -103,7 +103,8 @@ export class DashboardColumnsComponent implements OnInit {
       owner: this.session.user._id,
       lead: data[1].id,
       content: `Status change: Moved from ${movedFrom} to ${movedTo}.`,
-      creator: 'app'
+      creator: 'app',
+      fileurl: ''
     }
     this.timeline.createTimelineEntry(this.newTimelineEntry)
       .subscribe(

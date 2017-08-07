@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  base_url: 'https://job-apps-app.herokuapp.com'
+  base_url: 'https://appli-app.herokuapp.com'
 };

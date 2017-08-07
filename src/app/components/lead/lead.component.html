@@ -113,7 +113,11 @@
       </div>
 
       <div *ngFor="let item of uploader.queue">
-        <p class="upload-item-name">{{ item?.file?.name }}</p>
+        <p class="upload-item-name">{{ item?.file?.name }}
+          <clr-icon *ngIf="item?.isError" class="note-icon error-upload" shape="error" size="24"></clr-icon>
+          <clr-icon *ngIf="item?.isUploading" class="note-icon uploading" shape="clock" size="24"></clr-icon>
+          <clr-icon *ngIf="item?.isUploaded" class="note-icon uploaded" shape="check" size="24"></clr-icon>
+        </p>
       </div>
 
       <div class="timeline-content">
@@ -126,6 +130,7 @@
                   <clr-icon *ngIf="entry.creator === 'app'" class="note-icon" shape="display" size="24"></clr-icon>
               </p>
               <p class="entry-content">{{entry.content}}
+                <a *ngIf="entry.fileurl" href="{{entry.fileurl}}">Open</a>
                 <clr-icon id="{{entry._id}}" class="note-icon remove-entry" shape="trash" size="24" (click)="deleteTimelineEntry($event)"></clr-icon>
               </p>
             </div>

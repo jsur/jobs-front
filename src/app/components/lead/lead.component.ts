@@ -13,7 +13,7 @@ import { Timeline } from '../../shared/models/Timeline';
 
 import { environment } from '../../../environments/environment';
 
-import {FileUploader} from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload';
 
 
 @Component({
@@ -36,7 +36,8 @@ export class LeadComponent implements OnInit {
     owner: '',
     lead: '',
     content: '',
-    creator: 'manual'
+    creator: 'manual',
+    fileurl: ''
   }
 
   individualLead: Lead = {
@@ -53,9 +54,10 @@ export class LeadComponent implements OnInit {
 
   allTimelineEntries: Array<Object>;
 
-  public uploader: FileUploader = new FileUploader({url: `${this.url}/api/timeline/fileupload`});
+  public uploader: FileUploader = new FileUploader({url: ''});
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
+  itemUrl;
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -74,9 +76,24 @@ export class LeadComponent implements OnInit {
       },
       err => {
         console.log(err);
-      }
-    )
-  }
+      })
+
+    this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any) => {
+            this.timeline.createTimelineEntry({
+              owner: this.session.user._id,
+              lead: this.route.snapshot.params['id'],
+              content: 'Uploaded attachment',
+              creator: 'manual',
+              fileurl: this.itemUrl
+            })
+              .subscribe(entry => {
+                this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+              },
+              error => {
+                console.log(error);
+              });
+            };
+    }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -84,7 +101,6 @@ export class LeadComponent implements OnInit {
     });
 
     this.getLeadTimelineEntries(this.route.snapshot.params['id']);
-
   }
 
   getLead(id: string) {
@@ -192,7 +208,26 @@ export class LeadComponent implements OnInit {
   }
 
   addAttachments() {
-    console.log(this.uploader);
-    this.uploader.uploadAll();
+
+    this.uploader.queue.forEach((item) => {
+
+      this.timeline.getS3Credentials(item.file.name, item.file.type)
+        .subscribe(
+          data => {
+            this.uploader.options.url = data.signedRequest;
+            this.itemUrl = data.url;
+            this.uploader.options.autoUpload = true;
+
+            item.url = data.signedRequest;
+            item.method = 'PUT';
+            item.withCredentials = false; // lol
+
+            this.uploader.uploadItem(item);
+          },
+          err => {
+            console.log(err);
+          }
+        )
+    });
   }
 }

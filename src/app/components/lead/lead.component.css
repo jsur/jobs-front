@@ -160,7 +160,7 @@
   height: 8rem;
   border-radius: 5px;
   text-align: center;
-  padding-top: 2.5rem;
+  padding-top: 2rem;
   font-weight: bold;
   border: 1px dotted black;
 }
@@ -185,6 +185,14 @@
 
 .upload-cancel:hover {
   fill: tomato;
+}
+
+.uploaded {
+  fill: #18bfae;
+}
+
+.error-upload {
+  fill: red;
 }
 
 
