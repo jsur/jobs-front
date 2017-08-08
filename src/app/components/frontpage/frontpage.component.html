@@ -1,17 +1,29 @@
-<p>
-  <a routerLink="/signup">Sign up</a>
-</p>
+<app-header></app-header>
 
-<div *ngIf="session.isAuthenticated">
-  <p>
-    <a (click)="logout()" class="logout">Log out</a>
-  </p>
-  <p>
-    <a routerLink="/dashboard">Dashboard</a>
-  </p>
-</div>
-<div *ngIf="!session.isAuthenticated">
-  <p>
-    <a routerLink="/login">Log in</a>
-  </p>
-</div>
+<main>
+  <section class="section-1">
+    <h1>Appli.</h1>
+    <h2>Keep track of your job application leads. </h2>
+    <a routerLink="/signup">
+      <button id="custom-button" class="btn btn-primary" type="button" name="signup">Sign up!</button>
+    </a>
+  </section>
+  <section class="section-2">
+    <div class="dashboard">
+      <clr-icon class="note-icon" shape="dashboard" size="72"></clr-icon>
+      <p>See all leads at once in dashboard view</p>
+    </div>
+    <div class="notes">
+      <clr-icon class="note-icon" shape="upload-cloud" size="72"></clr-icon>
+      <p>No worksheets, always available</p>
+    </div>
+    <div class="files">
+      <clr-icon class="note-icon" shape="blocks-group" size="72"></clr-icon>
+      <p>Keep relevant information in lead timeline</p>
+    </div>
+    <div class="reminders">
+      <clr-icon class="note-icon" shape="alarm-clock" size="72"></clr-icon>
+      <p>Get reminders of leads going sour</p>
+    </div>
+  </section>
+</main>

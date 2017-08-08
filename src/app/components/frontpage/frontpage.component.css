@@ -1,3 +1,76 @@
-.logout {
-  color: blue;
+.section-1 {
+  padding-top: 1rem;
+  min-height: 30vh;
+  text-align: center;
+  background: #edecec;
 }
+
+.section-1 h1 {
+  margin: 0;
+}
+
+button {
+  margin: 1.3rem 0;
+}
+
+.section-2 {
+  min-height: 70vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(145, 219, 205, 1), rgba(2, 186, 169, 1));
+  padding-top: 1rem;
+  border-top: 3px solid rgba(161, 177, 176, 1);
+}
+
+.section-2 p {
+  margin: 1.7rem 5px;
+  font-size: 1.1rem;
+}
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+
+  .section-1 {
+    min-height: 35vh;
+  }
+
+  .section-2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 65vh;
+    padding-bottom: 4rem;
+  }
+
+  .section-2 div {
+    width: 40%;
+  }
+
+  button {
+    margin: 4rem 0;
+  }
+
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+
+  .section-2 div {
+    width: 35%;
+  }
+
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}

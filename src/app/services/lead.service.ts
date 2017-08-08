@@ -16,13 +16,15 @@ export class LeadService {
   url: string = environment.base_url;
 
   // Observable object sources
-  private newEventSource = new Subject<Object>();
-  private editEventSource = new Subject<Object>();
+  private newLeadSource = new Subject<Object>();
+  private editLeadSource = new Subject<Object>();
   private searchSource = new Subject<Object>();
+  private alarmChangeSource = new Subject<Object>();
   // Observable object stream
-  newEvent$ = this.newEventSource.asObservable();
-  editEvent$ = this.editEventSource.asObservable();
+  newEvent$ = this.newLeadSource.asObservable();
+  editEvent$ = this.editLeadSource.asObservable();
   searchTerm$ = this.searchSource.asObservable();
+  alarmChange$ = this.alarmChangeSource.asObservable();
 
   constructor(private http: Http) { }
 
@@ -60,12 +62,22 @@ export class LeadService {
       .catch(this.handleError);
   }
 
+  getLeadAlarms(id) {
+    return this.http.get(`${this.url}/api/alarms`, this.getOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+
   announceNewLead(lead) {
-    this.newEventSource.next(lead);
+    this.newLeadSource.next(lead);
   }
 
   announceEditLead(id: string) {
-    this.editEventSource.next(id);
+    this.editLeadSource.next(id);
+  }
+
+  announceAlarmChange() {
+    this.alarmChangeSource.next('lead_content_updated');
   }
 
   searchChange(search) {

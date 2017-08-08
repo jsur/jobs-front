@@ -81,10 +81,8 @@
   border-radius: 5px;
 }
 
-.new-entry:hover,
-.new-mail-entry:hover,
-.new-entry-attachment:hover {
-  background-color: #7ed7c8;
+.timeline-features * clr-icon:hover {
+  fill: #7ed7c8;
 }
 
 .note-icon {
@@ -102,10 +100,6 @@
 
 .new-entry-form textarea {
   border: 1px solid lightgray;
-}
-
-.close-entry {
-  margin-left: 2rem;
 }
 
 .close-entry:hover {

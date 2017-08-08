@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { LeadService } from '../../services/lead.service';
 
@@ -7,7 +7,7 @@ import { LeadService } from '../../services/lead.service';
   templateUrl: './lead-edit.component.html',
   styleUrls: ['./lead-edit.component.css']
 })
-export class LeadEditComponent implements OnChanges {
+export class LeadEditComponent {
   @Output() modalClosed = new EventEmitter();
   @Input() editableLead;
 
@@ -23,10 +23,6 @@ export class LeadEditComponent implements OnChanges {
     private router: Router
   ) { }
 
-  ngOnChanges() {
-
-  }
-
   close() {
     this.modalClosed.emit();
   }
@@ -36,6 +32,7 @@ export class LeadEditComponent implements OnChanges {
       .subscribe(
         data => {
           this.modalClosed.emit();
+          this.leads.announceAlarmChange();
         },
         err => {
           console.log(err);

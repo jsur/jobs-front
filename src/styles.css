@@ -12,10 +12,6 @@ a {
 
 /* Common styles - ids */
 
-#custom-header {
-  background: linear-gradient(to left, rgba(145,219,205,100), rgba(2,186,169,100));
-}
-
 #custom-button {
   background-color: #00AB9A;
   border-color: #00968B;

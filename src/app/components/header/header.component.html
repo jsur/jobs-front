@@ -1,5 +1,8 @@
 <header id="custom-header" class="header">
 
+  <div *ngIf="router.url=='/'">
+  </div>
+
   <div *ngIf="router.url=='/dashboard'">
     <div class="header-nav">
       <a (click)="emitNewLead()" class="nav-link nav-text">
@@ -28,9 +31,17 @@
     </div>
 
     <div class="header-actions">
+      <div *ngIf="alarms?.length > 0">
+        <div class="header-actions">
+          <div class="nav-link nav-text alarms">
+            <span class="alarm-length">{{alarms.length}}</span>
+            <clr-icon shape="alarm-clock"></clr-icon>
+          </div>
+        </div>
+      </div>
       <div *ngIf="session.isAuthenticated">
         <div class="header-actions">
-          <a routerLink="/" class="nav-link nav-text">Logged in as: {{session.user.username}}</a>
+          <span class="loggedin-user nav-link nav-text">Logged in as: {{session.user.username}}</span>
           <a (click)="logout()" class="nav-link nav-text">
             <clr-icon shape="logout"></clr-icon>
           </a>

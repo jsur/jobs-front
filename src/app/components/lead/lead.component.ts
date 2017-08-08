@@ -91,7 +91,6 @@ export class LeadComponent implements OnInit {
               .subscribe(entry => {
                 this.getLeadTimelineEntries(this.route.snapshot.params['id']);
                 this.uploader.removeFromQueue(item);
-                console.log('queue length:', this.uploader.queue.length);
               },
               error => {
                 console.log(error);
@@ -212,9 +211,7 @@ export class LeadComponent implements OnInit {
   }
 
   addAttachments() {
-
     this.uploader.queue.forEach((item) => {
-
       this.timeline.getS3Credentials(item.file.name, item.file.type)
         .subscribe(
           data => {

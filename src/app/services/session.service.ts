@@ -53,7 +53,7 @@ export class SessionService {
     this.isAuthenticated = false;
     localStorage.removeItem('token');
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   handleError(e) {

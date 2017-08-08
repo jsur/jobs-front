@@ -105,11 +105,11 @@
         class="well my-drop-zone file-upload"
         name="attachment"
         >
-        Drag file here
+        Drag file(s) here
       </div>
       <div class="file-upload-actions" [hidden]="!attachmentAddActive">
         <clr-icon class="note-icon upload-cancel" shape="close" size="32" (click)="closeAttachmentAdd()"></clr-icon>
-        <clr-icon class="note-icon upload-file" shape="upload-cloud" size="32" (click)="addAttachments()"></clr-icon>
+        <clr-icon class="note-icon upload-file" shape="floppy" size="32" (click)="addAttachments()"></clr-icon>
       </div>
 
       <div *ngFor="let item of uploader.queue">
