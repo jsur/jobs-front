@@ -90,6 +90,8 @@ export class LeadComponent implements OnInit {
             })
               .subscribe(entry => {
                 this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+                this.uploader.removeFromQueue(item);
+                console.log('queue length:', this.uploader.queue.length);
               },
               error => {
                 console.log(error);
@@ -218,7 +220,6 @@ export class LeadComponent implements OnInit {
           data => {
             this.uploader.options.url = data.signedRequest;
             this.itemUrl = data.url;
-            this.uploader.options.autoUpload = true;
 
             item.url = data.signedRequest;
             item.method = 'PUT';
