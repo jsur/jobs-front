@@ -29,6 +29,7 @@ import { TimelineService } from './services/timeline.service';
 import { appRouting } from './app.routing';
 
 import { LeadstatusPipe } from './pipes/leadstatus.pipe';
+import { LeadFilterPipe } from './pipes/lead-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LeadstatusPipe } from './pipes/leadstatus.pipe';
     LeadComponent,
     HeaderComponent,
     LeadEditComponent,
-    LeadstatusPipe
+    LeadstatusPipe,
+    LeadFilterPipe
   ],
   imports: [
     BrowserModule,

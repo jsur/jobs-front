@@ -10,10 +10,6 @@ import 'rxjs/add/observable/throw';
 
 import { environment } from '../../environments/environment';
 
-const token = localStorage.getItem('token');
-const headers = new Headers({ 'Authorization': `JWT ${token}` });
-const options = new RequestOptions({ headers: headers });
-
 @Injectable()
 export class LeadService {
 
@@ -22,9 +18,11 @@ export class LeadService {
   // Observable object sources
   private newEventSource = new Subject<Object>();
   private editEventSource = new Subject<Object>();
+  private searchSource = new Subject<Object>();
   // Observable object stream
   newEvent$ = this.newEventSource.asObservable();
   editEvent$ = this.editEventSource.asObservable();
+  searchTerm$ = this.searchSource.asObservable();
 
   constructor(private http: Http) { }
 
@@ -33,31 +31,31 @@ export class LeadService {
   }
 
   getUserLeads(user) {
-    return this.http.get(`${this.url}/api/leads/${user._id}`, options)
+    return this.http.get(`${this.url}/api/leads/${user._id}`, this.getOptions())
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   createLead(newLead: Lead) {
-    return this.http.post(`${this.url}/api/lead/new`, newLead, options)
+    return this.http.post(`${this.url}/api/lead/new`, newLead, this.getOptions())
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   getLead(id) {
-    return this.http.get(`${this.url}/api/lead/${id}`, options)
+    return this.http.get(`${this.url}/api/lead/${id}`, this.getOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   updateLead(id, lead) {
-    return this.http.put(`${this.url}/api/lead/${id}`, lead, options)
+    return this.http.put(`${this.url}/api/lead/${id}`, lead, this.getOptions())
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   deleteLead(id: string) {
-    return this.http.delete(`${this.url}/api/lead/${id}`, options)
+    return this.http.delete(`${this.url}/api/lead/${id}`, this.getOptions())
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -68,6 +66,16 @@ export class LeadService {
 
   announceEditLead(id: string) {
     this.editEventSource.next(id);
+  }
+
+  searchChange(search) {
+    this.searchSource.next(search);
+  }
+
+  getOptions(): RequestOptions {
+    const token = localStorage.getItem('token');
+    const headers = new Headers({ 'Authorization': `JWT ${token}` });
+    return (new RequestOptions({ headers: headers }));
   }
 
 }

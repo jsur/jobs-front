@@ -16,7 +16,7 @@ export class HeaderComponent {
     private leads: LeadService,
     public router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   goBack() {
     this.router.navigate(['dashboard']);
@@ -33,6 +33,10 @@ export class HeaderComponent {
   emitEditLead() {
     const id = this.route.url['value'][1].path;
     this.leads.announceEditLead(id);
+  }
+
+  searchPattern(e) {
+    this.leads.searchChange(e.target.value);
   }
 
 }

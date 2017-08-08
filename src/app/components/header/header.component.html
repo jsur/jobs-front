@@ -8,6 +8,14 @@
     </div>
   </div>
 
+  <div *ngIf="router.url=='/dashboard'">
+    <form class="search" #search="ngForm">
+      <label for="search_input" class="searchlabel">
+        <input id="search_input" type="text" name="search" (keyup)="searchPattern($event)" placeholder="Lead details..">
+      </label>
+    </form>
+  </div>
+
     <div *ngIf="router.url.includes('lead')">
       <div class="header-nav">
         <a (click)="goBack()" class="nav-link nav-text">
