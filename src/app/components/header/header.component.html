@@ -23,7 +23,7 @@
       <div *ngIf="session.isAuthenticated">
         <div class="header-actions">
           <a routerLink="/" class="nav-link nav-text">Logged in as: {{session.user.username}}</a>
-          <a (click)="emitLogOut()" class="nav-link nav-text">
+          <a (click)="logout()" class="nav-link nav-text">
             <clr-icon shape="logout"></clr-icon>
           </a>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 import { LeadService } from '../../services/lead.service';
@@ -8,9 +8,8 @@ import { LeadService } from '../../services/lead.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Output() plusButton = new EventEmitter();
-  @Output() logOut = new EventEmitter();
 
   constructor(
     public session: SessionService,
@@ -18,9 +17,6 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private route: ActivatedRoute
   ) { }
-
-  ngOnInit() {
-  }
 
   goBack() {
     this.router.navigate(['dashboard']);
@@ -30,8 +26,8 @@ export class HeaderComponent implements OnInit {
     this.plusButton.emit();
   }
 
-  emitLogOut() {
-    this.logOut.emit();
+  logout() {
+    this.session.logout();
   }
 
   emitEditLead() {

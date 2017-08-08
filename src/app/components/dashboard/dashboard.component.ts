@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 
 @Component({
@@ -6,20 +6,11 @@ import { SessionService } from '../../services/session.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
   newLeadActive = false;
 
-  constructor(
-    private session: SessionService
-  ) { }
-
-  ngOnInit() {
-  }
-
-  logout() {
-    this.session.logout();
-  }
+  constructor() { }
 
   newLead() {
     this.newLeadActive = !this.newLeadActive;
