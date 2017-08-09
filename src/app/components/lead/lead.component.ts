@@ -80,23 +80,23 @@ export class LeadComponent implements OnInit {
       })
 
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any) => {
-            this.timeline.createTimelineEntry({
-              owner: this.session.user._id,
-              lead: this.route.snapshot.params['id'],
-              content: 'Uploaded attachment',
-              creator: 'manual',
-              fileurl: this.itemUrl,
-              filename: item.file.name
-            })
-              .subscribe(entry => {
-                this.getLeadTimelineEntries(this.route.snapshot.params['id']);
-                this.uploader.removeFromQueue(item);
-              },
-              error => {
-                console.log(error);
-              });
-            };
-    }
+      this.timeline.createTimelineEntry({
+        owner: this.session.user._id,
+        lead: this.route.snapshot.params['id'],
+        content: 'Uploaded attachment',
+        creator: 'manual',
+        fileurl: this.itemUrl,
+        filename: item.file.name
+      })
+        .subscribe(entry => {
+          this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+          this.uploader.removeFromQueue(item);
+        },
+        error => {
+          console.log(error);
+        });
+    };
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -116,14 +116,6 @@ export class LeadComponent implements OnInit {
           console.log(err);
         }
       )
-  }
-
-  toggleEditLead() {
-    this.editLeadActive = !this.editLeadActive;
-  }
-
-  toggleDeleteLead() {
-    this.deleteLeadActive = !this.deleteLeadActive;
   }
 
   deleteLead() {
@@ -186,24 +178,6 @@ export class LeadComponent implements OnInit {
       )
   }
 
-  toggleEmailInfoModal() {
-    this.emailInfoModalActive = !this.emailInfoModalActive;
-  }
-
-  toggleTimelineEntry() {
-    this.timelineEntryActive = !this.timelineEntryActive;
-    this.toggleTimelineButtonsHidden();
-  }
-
-  toggleTimelineButtonsHidden() {
-    this.timelineButtonsHidden = !this.timelineButtonsHidden;
-  }
-
-  toggleAttachmentAdd() {
-    this.toggleTimelineButtonsHidden();
-    this.attachmentAddActive = !this.attachmentAddActive;
-  }
-
   closeAttachmentAdd() {
     this.uploader.cancelAll();
     this.uploader.clearQueue();
@@ -229,5 +203,31 @@ export class LeadComponent implements OnInit {
           }
         )
     });
+  }
+
+  toggleEditLead() {
+    this.editLeadActive = !this.editLeadActive;
+  }
+
+  toggleDeleteLead() {
+    this.deleteLeadActive = !this.deleteLeadActive;
+  }
+
+  toggleEmailInfoModal() {
+    this.emailInfoModalActive = !this.emailInfoModalActive;
+  }
+
+  toggleTimelineEntry() {
+    this.timelineEntryActive = !this.timelineEntryActive;
+    this.toggleTimelineButtonsHidden();
+  }
+
+  toggleTimelineButtonsHidden() {
+    this.timelineButtonsHidden = !this.timelineButtonsHidden;
+  }
+
+  toggleAttachmentAdd() {
+    this.toggleTimelineButtonsHidden();
+    this.attachmentAddActive = !this.attachmentAddActive;
   }
 }

@@ -57,15 +57,18 @@ export class HeaderComponent implements OnInit {
   }
 
   getAlarms() {
-    this.leads.getLeadAlarms(this.session.user._id)
-      .subscribe(
-        data => {
-          this.alarms = data;
-        },
-        err => {
-          console.log(err);
-        }
-      )
+
+    if (this.route.url['value'].length !== 0) {
+      this.leads.getLeadAlarms(this.session.user._id)
+        .subscribe(
+          data => {
+            this.alarms = data;
+          },
+          err => {
+            console.log(err);
+          }
+        )
+      }
   }
 
 }

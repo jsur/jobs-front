@@ -1,8 +1,5 @@
 <header id="custom-header" class="header">
 
-  <div *ngIf="router.url=='/'">
-  </div>
-
   <div *ngIf="router.url=='/dashboard'">
     <div class="header-nav">
       <a (click)="emitNewLead()" class="nav-link nav-text">
@@ -39,6 +36,7 @@
           </div>
         </div>
       </div>
+
       <div *ngIf="session.isAuthenticated">
         <div class="header-actions">
           <span class="loggedin-user nav-link nav-text">Logged in as: {{session.user.username}}</span>
@@ -47,6 +45,7 @@
           </a>
         </div>
       </div>
+
       <div *ngIf="!session.isAuthenticated">
         <div class="header-actions">
           <a routerLink="/login" class="nav-link nav-text">
@@ -54,5 +53,6 @@
           </a>
         </div>
       </div>
+
     </div>
 </header>

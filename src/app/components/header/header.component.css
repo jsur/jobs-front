@@ -18,6 +18,11 @@ clr-icon {
 
 .loggedin-user {
   display: none !important;
+  cursor: default;
+}
+
+.alarms {
+  cursor: pointer;
 }
 
 .alarms span {
