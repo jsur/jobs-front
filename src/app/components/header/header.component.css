@@ -23,6 +23,7 @@ clr-icon {
 
 .alarms {
   cursor: pointer;
+  padding: 0 !important;
 }
 
 .alarms span {
@@ -34,7 +35,23 @@ clr-icon {
 }
 
 .alarm-length {
-  margin-right: 3rem;
+  margin-right: 1rem !important;
+}
+
+button {
+  outline: none !important;
+}
+
+clr-dropdown-menu {
+  padding: 0 !important;
+}
+
+.dropdown-header {
+  padding-top: 5px;
+}
+
+.dropdown-divider {
+  margin: 0;
 }
 
 /* Mobile first queries */

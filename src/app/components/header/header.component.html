@@ -28,12 +28,22 @@
     </div>
 
     <div class="header-actions">
+
       <div *ngIf="alarms?.length > 0">
         <div class="header-actions">
-          <div class="nav-link nav-text alarms">
-            <span class="alarm-length">{{alarms.length}}</span>
-            <clr-icon shape="alarm-clock"></clr-icon>
-          </div>
+          <clr-dropdown [clrMenuPosition]="'bottom-right'" [clrCloseMenuOnItemClick]="false">
+            <button type="button" clrDropdownToggle class="alarms">
+                <clr-icon id="alarm-dropdown" shape="alarm-clock"></clr-icon>
+                <span class="alarm-length">{{alarms.length}}</span>
+            </button>
+            <clr-dropdown-menu>
+                <label class="dropdown-header">Leads that have not been updated in 2 weeks</label>
+                <div class="dropdown-divider"></div>
+                <div *ngFor="let alarm of alarms">
+                  <button routerLink="/lead/{{alarm._id}}" type="button" clrDropdownItem>{{alarm.company}}, {{alarm.jobtitle}}</button>
+                </div>
+            </clr-dropdown-menu>
+          </clr-dropdown>
         </div>
       </div>
 
@@ -55,4 +65,5 @@
       </div>
 
     </div>
+
 </header>
