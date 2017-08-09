@@ -99,11 +99,14 @@ export class LeadComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getLeadParamId();
+    this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+  }
+
+  getLeadParamId() {
     this.route.params.subscribe(params => {
       this.getLead(params['id']);
     });
-
-    this.getLeadTimelineEntries(this.route.snapshot.params['id']);
   }
 
   getLead(id: string) {
@@ -144,6 +147,7 @@ export class LeadComponent implements OnInit {
       .subscribe(
         data => {
           this.getLeadTimelineEntries(this.newEntry.lead);
+          this.leads.announceAlarmChange();
         },
         err => {
           console.log(err);
@@ -204,6 +208,8 @@ export class LeadComponent implements OnInit {
         )
     });
   }
+
+  // All toggles here
 
   toggleEditLead() {
     this.editLeadActive = !this.editLeadActive;

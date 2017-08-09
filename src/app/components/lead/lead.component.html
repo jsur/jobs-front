@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<app-lead-edit [editableLead]="individualLead" [hidden]="!editLeadActive" (modalClosed)="toggleEditLead()"></app-lead-edit>
+<app-lead-edit [editableLead]="individualLead" [hidden]="!editLeadActive" (modalClosed)="toggleEditLead()" (leadUpdated)="getLeadParamId()"></app-lead-edit>
 
 <div [hidden]="!deleteLeadActive" class="modal">
     <div class="modal-dialog" role="dialog" aria-hidden="true">

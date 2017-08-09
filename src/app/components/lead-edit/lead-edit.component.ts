@@ -9,6 +9,7 @@ import { LeadService } from '../../services/lead.service';
 })
 export class LeadEditComponent {
   @Output() modalClosed = new EventEmitter();
+  @Output() leadUpdated = new EventEmitter();
   @Input() editableLead;
 
   statusOpts = {
@@ -32,6 +33,7 @@ export class LeadEditComponent {
       .subscribe(
         data => {
           this.modalClosed.emit();
+          this.leadUpdated.emit();
           this.leads.announceAlarmChange();
         },
         err => {
