@@ -92,6 +92,7 @@ export class LeadComponent implements OnInit {
           this.getLeadTimelineEntries(this.route.snapshot.params['id']);
           this.updateLeadUpdateAt(this.route.snapshot.params['id']); // hack
           this.getLeadParamId(); // get lead data again to refresh page contents
+          this.leads.announceAlarmChange();
           this.uploader.removeFromQueue(item);
         },
         error => {
