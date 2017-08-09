@@ -90,6 +90,8 @@ export class LeadComponent implements OnInit {
       })
         .subscribe(entry => {
           this.getLeadTimelineEntries(this.route.snapshot.params['id']);
+          this.updateLeadUpdateAt(this.route.snapshot.params['id']); // hack
+          this.getLeadParamId(); // get lead data again to refresh page contents
           this.uploader.removeFromQueue(item);
         },
         error => {
@@ -147,6 +149,7 @@ export class LeadComponent implements OnInit {
       .subscribe(
         data => {
           this.getLeadTimelineEntries(this.newEntry.lead);
+          this.updateLeadUpdateAt(this.newEntry.lead);
           this.leads.announceAlarmChange();
         },
         err => {
@@ -208,6 +211,18 @@ export class LeadComponent implements OnInit {
         )
     });
   }
+
+  updateLeadUpdateAt(id) {
+    this.leads.setLeadUpdateAtAsCurrent(id)
+      .subscribe(
+        data => {
+          // console.log(data);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }
 
   // All toggles here
 

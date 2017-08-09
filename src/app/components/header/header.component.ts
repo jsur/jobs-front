@@ -63,6 +63,7 @@ export class HeaderComponent implements OnInit {
         .subscribe(
           data => {
             this.alarms = data;
+            console.log(this.alarms);
           },
           err => {
             console.log(err);

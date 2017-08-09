@@ -56,6 +56,12 @@ export class LeadService {
       .catch(this.handleError);
   }
 
+  setLeadUpdateAtAsCurrent(id) {
+    return this.http.put(`${this.url}/api/lead/updatedat/${id}`, this.getOptions())
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
   deleteLead(id: string) {
     return this.http.delete(`${this.url}/api/lead/${id}`, this.getOptions())
       .map(res => res.json())
