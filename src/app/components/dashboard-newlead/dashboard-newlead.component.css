@@ -3,7 +3,8 @@
 }
 
 #modalbody {
-  width: 65%;
+  width: 100%;
+  min-height: 50%;
 }
 
 #card-image {
@@ -22,8 +23,13 @@
   margin-top: 15px;
 }
 
+.modal-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .modalcards {
-  width: 40%;
+  display: none;
 }
 
 .card-img {
@@ -40,10 +46,6 @@
   font-weight: bold;
 }
 
-.modal-content-container {
-  display: flex;
-}
-
 .featured-review {
   font-weight: bold;
 }
@@ -53,3 +55,42 @@
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .modal-content-container {
+    flex-direction: row;
+  }
+  #modalbody {
+    width: 55%;
+  }
+  .modalcards {
+    width: 40%;
+    display: block;
+    margin-left: 3rem;
+  }
+
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  #modalbody {
+    width: 65%;
+  }
+  .modalcards {
+    width: 40%;
+    display: block;
+    margin-left: 0;
+  }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
