@@ -26,4 +26,5 @@ export class DashboardLeadcardComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }
