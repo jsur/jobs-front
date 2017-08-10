@@ -4,6 +4,6 @@ export class Lead {
   jobtitle: string;
   status: string;
   logourl: string;
-  contactperson: {name: string, email: string}
+  contactperson: {name: string, email: string};
   isFavorite: boolean;
 }
