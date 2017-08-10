@@ -48,13 +48,10 @@ export class DashboardColumnsComponent implements OnInit {
               .subscribe(
                 lead => {
                   lead['status'] = data[2].parentNode.id;
-                  // this.statusChangeTimelineEntry(data);
                   this.leads.updateLead(lead._id, lead)
                     .subscribe(
                       updatedLead => {
-                        // console.log(updatedLead);
-                        // ????????? what happens when responses multiply?
-                        // this.statusChangeTimelineEntry(data);
+                        this.leads.announceAlarmChange(); // make sure the alarm count changes
                       }
                     )
                 }
