@@ -86,7 +86,6 @@
   width: 45%;
   margin: 0 auto;
   align-items: center;
-  /*border: 1px solid lightgray;*/
   height: 5rem;
   border-radius: 5px;
 }
@@ -120,7 +119,7 @@
   width: 100%;
   margin: 2rem auto 0 auto;
   padding: 5px;
-  height: 80%;
+  height: 80vh;
   overflow-y: scroll;
 }
 
