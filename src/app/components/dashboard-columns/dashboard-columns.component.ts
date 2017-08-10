@@ -72,12 +72,14 @@ export class DashboardColumnsComponent implements OnInit {
           this.leadsContacted = data.leadsContacted.sort(function(a, b) {
             return b.isFavorite > a.isFavorite;
           });
+          console.log('leadsContacted', this.leadsContacted);
           this.leadsReplyReceived = data.leadsReplyReceived.sort(function(a, b) {
             return b.isFavorite > a.isFavorite
           });
           this.leadsInterview = data.leadsInterview.sort(function(a, b) {
             return b.isFavorite > a.isFavorite;
           });
+          console.log('leadsInterview', this.leadsInterview);
           this.leadsDone = data.leadsDone.sort(function(a, b) {
             return b.isFavorite > a.isFavorite;
           });
