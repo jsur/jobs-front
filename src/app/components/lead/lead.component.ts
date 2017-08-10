@@ -50,7 +50,8 @@ export class LeadComponent implements OnInit {
     contactperson: {
       name: '',
       email: ''
-    }
+    },
+    isFavorite: false
   }
 
   allTimelineEntries: Array<Object>;

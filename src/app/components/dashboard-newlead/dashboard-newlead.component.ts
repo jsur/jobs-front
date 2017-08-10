@@ -23,7 +23,8 @@ export class DashboardNewleadComponent implements OnInit {
     contactperson: {
       name: '',
       email: ''
-    }
+    },
+    isFavorite: false
   };
   companyRating: Array<Object> = [];
   searchedCompanyNameLength: number;
