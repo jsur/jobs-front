@@ -31,11 +31,9 @@ export class DashboardLeadcardComponent implements OnInit {
     e.preventDefault();
     e.stopPropagation();
     const id = e.target.parentNode.id ? e.target.parentNode.id : e.target.parentNode.parentNode.id;
-    console.log(id);
     this.leadservice.toggleFavorite(id)
       .subscribe(
         data => {
-          console.log('toggleFavorite data:', data);
           this.leadservice.announceNewLead();
         },
         err => {

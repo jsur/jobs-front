@@ -69,25 +69,23 @@ export class DashboardColumnsComponent implements OnInit {
     this.leads.getUserLeads(this.session.user)
       .subscribe(
         data => {
-          this.leadsContacted = data.leadsContacted.sort(function(obj1, obj2) {
-            return obj2.isFavorite > obj1.isFavorite;
-          });
-          console.log('leadsContacted', this.leadsContacted);
-          this.leadsReplyReceived = data.leadsReplyReceived.sort(function(obj1, obj2) {
-            return obj2.isFavorite > obj1.isFavorite
-          });
-          this.leadsInterview = data.leadsInterview.sort(function(obj1, obj2) {
-            return obj2.isFavorite > obj1.isFavorite;
-          });
-          console.log('leadsInterview', this.leadsInterview);
-          this.leadsDone = data.leadsDone.sort(function(obj1, obj2) {
-            return obj2.isFavorite > obj1.isFavorite;
-          });
+          this.leadsContacted = data.leadsContacted;
+          this.leadsReplyReceived = data.leadsReplyReceived;
+          this.leadsInterview = data.leadsInterview;
+          this.leadsDone = data.leadsDone;
+          this.sortLeads();
         },
         err => {
           console.log(err);
         }
       );
+  }
+
+  sortLeads() {
+    this.leadsContacted.sort((a: any, b: any) => b.isFavorite - a.isFavorite);
+    this.leadsReplyReceived.sort((a: any, b: any) => b.isFavorite - a.isFavorite);
+    this.leadsInterview.sort((a: any, b: any) => b.isFavorite - a.isFavorite);
+    this.leadsDone.sort((a: any, b: any) => b.isFavorite - a.isFavorite);
   }
 
   getCardColIndex(card) {
@@ -114,7 +112,7 @@ export class DashboardColumnsComponent implements OnInit {
     this.timeline.createTimelineEntry(this.newTimelineEntry)
       .subscribe(
         newEntry => {
-          console.log(newEntry.timelineEntry.content);
+          // console.log(newEntry.timelineEntry.content);
         },
         err => {
           console.log(err);
