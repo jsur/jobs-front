@@ -49,7 +49,7 @@ export class DashboardNewleadComponent implements OnInit {
     this.leads.createLead(this.newLead)
       .subscribe(
         data => {
-          this.leads.announceNewLead(data.lead);
+          this.leads.announceNewLead();
         },
         err => {
           console.log(err);

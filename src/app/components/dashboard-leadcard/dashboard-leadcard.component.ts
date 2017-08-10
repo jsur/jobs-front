@@ -27,4 +27,19 @@ export class DashboardLeadcardComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleFavorite(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const id = e.target.parentNode.id ? e.target.parentNode.id : e.target.parentNode.parentNode.id;
+    this.leadservice.toggleFavorite(id)
+      .subscribe(
+        data => {
+          this.leadservice.announceNewLead();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
 }

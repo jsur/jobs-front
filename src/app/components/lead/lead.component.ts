@@ -71,7 +71,7 @@ export class LeadComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.leads.editEvent$.subscribe(
+    this.leads.editLead$.subscribe(
       data => {
         this.toggleEditLead();
       },

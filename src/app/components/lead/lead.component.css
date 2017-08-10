@@ -1,3 +1,11 @@
+.markedasfavorite {
+  margin-top: 1rem;
+}
+
+.star {
+  fill: rgb(237, 225, 60);
+}
+
 .page-content {
   width: 100%;
   min-height: 100vh;
@@ -37,6 +45,7 @@
 
 .topic h2 {
   font-weight: bold;
+  margin-top: 16px;
 }
 
 .lead-info {

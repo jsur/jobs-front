@@ -7,6 +7,7 @@
           <p class="jobtitle">{{lead.jobtitle}}</p>
           <p class="company">{{lead.company}}</p>
         </div>
+        <clr-icon id="{{lead._id}}" class="star" [ngClass]="{'is-solid': lead.isFavorite}" shape="star" size="20" (click)="toggleFavorite($event)"></clr-icon>
       </div>
     </a>
   </div>

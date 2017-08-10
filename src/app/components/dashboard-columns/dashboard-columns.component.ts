@@ -28,7 +28,7 @@ export class DashboardColumnsComponent implements OnInit {
     private timeline: TimelineService,
     private dragulaService: DragulaService
   ) {
-    this.leads.newEvent$.subscribe(
+    this.leads.newLead$.subscribe(
       data => {
         this.getLeads();
       },
@@ -69,10 +69,10 @@ export class DashboardColumnsComponent implements OnInit {
     this.leads.getUserLeads(this.session.user)
       .subscribe(
         data => {
-          this.leadsContacted = data.leadsContacted;
-          this.leadsReplyReceived = data.leadsReplyReceived;
-          this.leadsInterview = data.leadsInterview;
-          this.leadsDone = data.leadsDone;
+          this.leadsContacted = data.leadsContacted.sort( (a, b) => b.isFavorite - a.isFavorite );
+          this.leadsReplyReceived = data.leadsReplyReceived.sort( (a, b) => b.isFavorite - a.isFavorite );
+          this.leadsInterview = data.leadsInterview.sort( (a, b) => b.isFavorite - a.isFavorite );
+          this.leadsDone = data.leadsDone.sort( (a, b) => b.isFavorite - a.isFavorite );
         },
         err => {
           console.log(err);

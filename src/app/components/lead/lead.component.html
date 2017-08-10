@@ -48,6 +48,10 @@
       <div class="topic">
         <img class="topic-img" src="{{individualLead.logourl}}" alt="">
         <div class="topic-text">
+          <div *ngIf="individualLead.isFavorite" class="markedasfavorite">
+            <clr-icon class="star is-solid" shape="star" size="20"></clr-icon>
+            <span class="markedasfavorite-span">Favorite</span>
+          </div>
           <h2>{{individualLead.jobtitle}}</h2>
           <h3>{{individualLead.company}}</h3>
           <p>Last updated: {{individualLead.updated_at | date:'longDate'}}</p>

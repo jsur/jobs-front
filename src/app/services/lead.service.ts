@@ -21,8 +21,8 @@ export class LeadService {
   private searchSource = new Subject<Object>();
   private alarmChangeSource = new Subject<Object>();
   // Observable object stream
-  newEvent$ = this.newLeadSource.asObservable();
-  editEvent$ = this.editLeadSource.asObservable();
+  newLead$ = this.newLeadSource.asObservable();
+  editLead$ = this.editLeadSource.asObservable();
   searchTerm$ = this.searchSource.asObservable();
   alarmChange$ = this.alarmChangeSource.asObservable();
 
@@ -74,8 +74,14 @@ export class LeadService {
       .catch(this.handleError);
   }
 
-  announceNewLead(lead) {
-    this.newLeadSource.next(lead);
+  toggleFavorite(id: string) {
+    return this.http.put(`${this.url}/api/lead/favorite/${id}`, this.getOptions())
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  announceNewLead() {
+    this.newLeadSource.next();
   }
 
   announceEditLead(id: string) {
