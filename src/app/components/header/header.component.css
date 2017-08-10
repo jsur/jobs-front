@@ -5,6 +5,7 @@
 #search_input {
   display: inline-block !important;
   margin-left: 5px;
+  color: white;
 }
 
 .search {

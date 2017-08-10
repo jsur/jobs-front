@@ -58,15 +58,19 @@
         </div>
       </div>
       <div class="lead-info">
-        <h3>Lead status</h3>
-        <h4>{{individualLead.status | leadstatus}}</h4>
-        <h3>Lead created</h3>
-        <h4>{{individualLead.created_at | date:'longDate'}}</h4>
-      </div>
-      <div class="lead-contact">
-        <h3>Lead contact</h3>
-        <h4>{{individualLead.contactperson?.name}}</h4>
-        <h4>{{individualLead?.contactperson?.email}}</h4>
+        <div class="status">
+          <h3>Lead status</h3>
+          <h4>{{individualLead.status | leadstatus}}</h4>
+        </div>
+        <div class="created">
+          <h3>Lead created</h3>
+          <h4>{{individualLead.created_at | date:'longDate'}}</h4>
+        </div>
+        <div class="lead-contact">
+          <h3>Lead contact</h3>
+          <h4>{{individualLead.contactperson?.name}}</h4>
+          <h4>{{individualLead?.contactperson?.email}}</h4>
+        </div>
       </div>
       <button id="custom-button-delete" class="btn lead-delete-button" type="button" name="deletelead" (click)="toggleDeleteLead()">Delete lead</button>
     </div>
