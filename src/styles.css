@@ -16,7 +16,7 @@ a {
   background-color: #00AB9A;
   border-color: #00968B;
   border-radius: 0;
-  color: black;
+  color: white;
 }
 
 #custom-button:hover {
@@ -38,7 +38,7 @@ a {
   background-color: tomato;
   border: none;
   border-radius: 0;
-  color: black;
+  color: white;
 }
 
 #custom-button-delete:hover {

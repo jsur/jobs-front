@@ -1,26 +1,47 @@
 .section-1 {
-  padding-top: 1rem;
-  min-height: 30vh;
+  padding-top: 4rem;
+  min-height: 50vh;
   text-align: center;
-  background: #edecec;
+  background: url('../../../assets/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .section-1 h1 {
   margin: 0;
 }
 
-button {
-  margin: 1.3rem 0;
+.section-1 h1, h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+}
+
+#custom-button-frontpage {
+  margin: 1.5rem 0;
+  width: 18rem;
+  height: 4rem;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 0;
+}
+
+#custom-button-frontpage:hover {
+  background-color: rgba(212, 212, 212, 0.5);
+}
+
+#custom-button-frontpage:active {
+  background-color: rgba(212, 212, 212, 0.5);
 }
 
 .section-2 {
-  min-height: 70vh;
+  min-height: 50vh;
   text-align: center;
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, rgba(145, 219, 205, 1), rgba(2, 186, 169, 1));
   padding-top: 1rem;
-  border-top: 3px solid rgba(161, 177, 176, 1);
+  /*border-top: 3px solid rgba(3, 145, 136, 1);*/
 }
 
 .section-2 p {
@@ -34,14 +55,18 @@ button {
 @media (min-width: 400px) {}
 
 /* Larger than phablet */
-@media (min-width: 550px) {
-}
+@media (min-width: 550px) {}
 
 /* Larger than tablet */
 @media (min-width: 750px) {
 
+  #custom-button-frontpage {
+    margin: 6rem 0.5rem 1rem 0.5rem;
+  }
+
   .section-1 {
-    min-height: 35vh;
+    min-height: 55vh;
+    padding-top: 6rem;
   }
 
   .section-2 {
@@ -49,12 +74,15 @@ button {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-height: 65vh;
-    padding-bottom: 4rem;
+    min-height: 45vh;
   }
 
   .section-2 div {
     width: 40%;
+  }
+
+  .section-1 h1, h2 {
+    font-size: 3rem;
   }
 
   button {
@@ -73,4 +101,10 @@ button {
 }
 
 /* Larger than Desktop HD */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+  .section-1 {
+    text-align: right;
+  }
+
+}

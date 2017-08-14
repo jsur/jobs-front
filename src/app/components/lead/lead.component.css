@@ -8,7 +8,7 @@
 
 .page-content {
   width: 100%;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   background-color: white !important;
   /*background-color: #F5F5F5;*/
   padding: 2rem;
@@ -31,7 +31,7 @@
   flex-direction: column;
   min-height: 25%;
   border-bottom: 1px solid lightgray;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
 }
 
 .topic-img {
@@ -75,6 +75,7 @@
 .main-col-2 h2 {
   margin: 0 auto;
   user-select: none;
+  padding-bottom: 1rem;
 }
 
 .timeline-features {
@@ -122,7 +123,7 @@
   width: 100%;
   margin: 2rem auto 0 auto;
   padding: 5px;
-  height: 80vh;
+  height: 60vh;
   overflow-y: scroll;
 }
 
@@ -241,7 +242,7 @@
   .main-col {
     margin: 0 1rem;
     padding: 3rem 5rem;
-    min-height: 85vh;
+    min-height: 30vh;
     background-color: white;
     box-shadow: 1px 1px 1px 0 lightgray;
   }
